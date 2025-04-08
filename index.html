@@ -1,27 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AJHS Class of 2015 10-Year Reunion</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Class of 2015 Reunion 🎓</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #000000;
+      color: #ffd700;
+      padding: 40px;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    h1 {
+      color: #ffd700;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #ffd700;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ffd700; }
+      to { text-shadow: 0 0 15px #ffd700; }
+    }
+    .info {
+      font-size: 18px;
+      margin: 20px 0;
+      background: rgba(255, 215, 0, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .rsvp-button {
+      background-color: #ffd700;
+      color: #000000;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      display: inline-block;
+      margin: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .rsvp-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ffd700;
+    }
+    .countdown {
+      font-size: 24px;
+      margin: 30px 0;
+      color: #ffffff;
+    }
+    .emoji-spin {
+      display: inline-block;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-    <section class="event-details">
-        <h2>AJHS Class of 2015<br>10-Year Reunion</h2>
-        <p class="intro">Wow, 10 years around the sun already! Can you believe it, Prospectors?</p>
-        <div class="details-container">
-            <div class="detail-item"><span class="icon">📅</span><p><strong>When:</strong> Saturday, October 11th, 2025</p></div>
-            <div class="detail-item"><span class="icon">⏰</span><p><strong>Time:</strong> 6:00 PM – 10:00 PM</p></div>
-            <div class="detail-item"><span class="icon">📍</span><p><strong>Where:</strong> [Event Venue], [Address]</p></div>
-            <div class="detail-item"><span class="icon">🎶</span><p><strong>Music:</strong> DJ [Host Name]</p></div>
-            <div class="detail-item"><span class="icon">💃</span><p><strong>Dress:</strong> Semi-Formal</p></div>
-            <div class="detail-item"><span class="icon">🍴</span><p><strong>Entry:</strong> $50 – food & drinks</p></div>
-            <div class="detail-item"><span class="icon">👩‍🍼</span><p><strong>Note:</strong> Adults-only</p></div>
-        </div>
-        <p class="tagline">Let’s strike gold together and dance through a decade of memories!</p>
-        <a href="https://forms.gle/RmAdYxKiXuGPAnN78" target="_blank" class="rsvp-button">RSVP Here</a>
-        <p class="rsvp-message" id="rsvpMessage" style="display: none;">Made with love by AJHS Class of 2015.</p>
-    </section>
-    <script src="script.js"></script>
+  <h1><span class="emoji-spin">🎉</span> Evergreen High School Class of 2015 - 10 Year Reunion <span class="emoji-spin">🎓</span></h1>
+  
+  <div class="info">
+    <p><strong>Date:</strong> August 2, 2025</p>
+    <p><strong>Time:</strong> 6:00 PM – 11:00 PM</p>
+    <p><strong>Location:</strong> City Park Hall</p>
+    <p><strong>Dress Code:</strong> Black & Gold Glam</p>
+    <p>Get ready for a night of nostalgia, music, and epic memories!</p>
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+
+  <p>RSVP to join the party of the decade!</p>
+  <a class="rsvp-button" href="https://forms.gle/YOUR-GOOGLE-FORM-LINK" target="_blank">RSVP Now</a>
+
+  <script>
+    // Countdown timer
+    const reunionDate = new Date("August 2, 2025 18:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const timeLeft = reunionDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s until the big night!`;
+
+      if (timeLeft < 0) {
+        countdownElement.innerHTML = "The reunion is here! Let’s party! 🎉";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
