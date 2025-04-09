@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Class of 2015 Reunion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #000000;
+      color: #ffd700;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .background-slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+    .background-slideshow.active {
+      opacity: 1;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      z-index: 100;
+    }
+    .nav a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav a:hover {
+      color: #ffffff;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 80px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #ffd700;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #ffd700;
+      margin: 0 0 30px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ffd700; }
+      to { text-shadow: 0 0 15px #ffd700; }
+    }
+    .gallery {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 20px 0;
+      background: rgba(0, 0, 0, 0.6);
+      border-top: 1px solid #ffd700;
+      border-bottom: 1px solid #ffd700;
+    }
+    .gallery img {
+      height: 200px;
+      margin: 0 10px;
+      border: 2px solid #ffd700;
+      border-radius: 5px;
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+    .slideshow {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .slideshow img {
+      max-width: 100%;
+      max-height: 90%;
+      border: 1px solid #ffd700;
+      border-radius: 8px;
+    }
+    .slideshow .close-btn, .slideshow .nav-btn {
+      position: absolute;
+      background: rgba(255, 215, 0, 0.7);
+      color: #000000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 2px;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .slideshow .close-btn:hover, .slideshow .nav-btn:hover {
+      opacity: 1;
+    }
+    .slideshow .close-btn {
+      top: 10px;
+      right: 10px;
+    }
+    .slideshow .nav-btn.prev {
+      left: 10px;
+    }
+    .slideshow .nav-btn.next {
+      right: 10px;
+    }
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 2em;
+      }
+      .gallery img {
+        height: 100px;
+      }
+      .slideshow img {
+        max-width: 95%;
+        max-height: 80%;
+      }
+      .slideshow .close-btn, .slideshow .nav-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+      .nav a {
+        font-size: 14px;
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Slideshow -->
+  <div class="background-slideshow" id="bg1"></div>
+  <div class="background-slideshow" id="bg2"></div>
+  <div class="background-slideshow" id="bg3"></div>
+  <div class="overlay"></div>
 
+  <!-- Navigation -->
+  <div class="nav">
+    <a href="index.html" title="Back to home page">Home</a>
+    <a href="#details" title="Event date, time, dress code, and more">Details</a>
+    <a href="#location" title="Location details (TBD)">Location</a>
+    <a href="gallery.html" title="View photos from our high school days">Gallery</a>
+    <a href="faq.html" title="Frequently asked questions about the reunion">FAQ</a>
+    <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Photo Gallery</h1>
+    <!-- Side-Scrolling Gallery -->
+    <div class="gallery" id="gallery">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015B.jpg?raw=true" alt="Reunion Photo 1">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015C.jpg?raw=true" alt="Reunion Photo 2">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015h.jpg?raw=true" alt="Reunion Photo 3">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015i.jpg?raw=true" alt="Reunion Photo 4">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015A.jpg?raw=true" alt="Reunion Photo 5">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015e.jpg?raw=true" alt="Reunion Photo 6">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015k.jpg?raw=true" alt="Reunion Photo 7">
+      <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015D.jpg?raw=true" alt="Reunion Photo 8">
+      <img src="https://raw.githubusercontent.com/divelbissg/2015class-reunion/main/images/photo4.jpg" alt="Reunion Photo 9">
+      <img src="https://raw.githubusercontent.com/divelbissg/2015class-reunion/main/images/photo4.jpg" alt="Reunion Photo 10">
+      <img src="https://raw.githubusercontent.com/divelbissg/2015class-reunion/main/images/photo4.jpg" alt="Reunion Photo 11">
+      <img src="https://raw.githubusercontent.com/divelbissg/2015class-reunion/main/images/photo4.jpg" alt="Reunion Photo 12">
+      <img src="https://raw.githubusercontent.com/divelbissg/2015class-reunion/main/images/photo4.jpg" alt="Reunion Photo 13">
+      <img src="https://raw.githubusercontent.com/divelbissg/2015class-reunion/main/images/photo4.jpg" alt="Reunion Photo 14">
+      <img src="https://raw.githubusercontent.com/divelbissg/2015class-reunion/main/images/photo4.jpg" alt="Reunion Photo 15">
+    </div>
+
+    <!-- Slideshow Preview -->
+    <div class="slideshow" id="slideshow">
+      <img id="slideshow-image" src="" alt="Slideshow Image">
+      <button class="close-btn" id="close-slideshow">Close</button>
+      <button class="nav-btn prev" id="prev-slide">Previous</button>
+      <button class="nav-btn next" id="next-slide">Next</button>
+    </div>
+  </div>
+
+  <script>
+    // Background Slideshow
+    const backgrounds = [
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015B.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015C.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015h.jpg?raw=true"
+    ];
+    let currentBgIndex = 0;
+
+    function changeBackground() {
+      const bgElements = document.querySelectorAll(".background-slideshow");
+      bgElements.forEach((bg, index) => {
+        bg.classList.remove("active");
+        if (index === currentBgIndex) {
+          bg.style.backgroundImage = `url(${backgrounds[index]})`;
+          bg.classList.add("active");
+        }
+      });
+      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+    }
+
+    changeBackground();
+    setInterval(changeBackground, 10000);
+
+    // Slideshow functionality
+    const galleryImages = document.querySelectorAll(".gallery img");
+    const slideshow = document.getElementById("slideshow");
+    const slideshowImage = document.getElementById("slideshow-image");
+    const closeBtn = document.getElementById("close-slideshow");
+    const prevBtn = document.getElementById("prev-slide");
+    const nextBtn = document.getElementById("next-slide");
+    let currentIndex = 0;
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        currentIndex = index;
+        slideshowImage.src = img.src;
+        slideshow.style.display = "flex";
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      slideshow.style.display = "none";
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      slideshowImage.src = galleryImages[currentIndex].src;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      slideshowImage.src = galleryImages[currentIndex].src;
+    });
+
+    slideshow.addEventListener("click", (e) => {
+      if (e.target === slideshow) {
+        slideshow.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
