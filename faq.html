@@ -112,6 +112,33 @@
     .faq a:hover {
       color: #E5E5E5;
     }
+    .submit-question {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .submit-question p {
+      font-size: 1.2em;
+      color: #E5E5E5;
+      margin-bottom: 15px;
+    }
+    .submit-question a {
+      background-color: #FFD700;
+      color: #000000;
+      padding: 10px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all 0.3s;
+      border: 2px solid #FFD700;
+    }
+    .submit-question a:hover {
+      background-color: #E5E5E5;
+      color: #000000;
+      box-shadow: 0 0 15px #FFD700;
+    }
     @media (max-width: 700px) {
       h1 {
         font-size: 2em;
@@ -125,6 +152,13 @@
       }
       .faq p {
         font-size: 1em;
+      }
+      .submit-question p {
+        font-size: 1em;
+      }
+      .submit-question a {
+        padding: 8px 20px;
+        font-size: 14px;
       }
       .nav a {
         font-size: 14px;
@@ -155,7 +189,7 @@
     <h1>Frequently Asked Questions</h1>
     <div class="faq">
       <h2>What is the date and time of the reunion?</h2>
-      <p>Scheduled for October 11, 2025, from 5:00 PM to 9:00 PM.</p>
+      <p>The Apache Junction High School Class of 2015 10-Year Reunion is scheduled for October 11, 2025, from 5:00 PM to 9:00 PM.</p>
 
       <h2>Where will the reunion be held?</h2>
       <p>The location is currently TBD. We’ll update all registered guests as soon as the venue is confirmed.</p>
@@ -174,6 +208,12 @@
 
       <h2>Who can I contact for more information?</h2>
       <p>For any questions or additional information, please contact our reunion committee at <a href="mailto:ajhs2015reunion@gmail.com">ajhs2015reunion@gmail.com</a>.</p>
+
+      <!-- New Section for Submitting Questions -->
+      <div class="submit-question">
+        <p>Have a question that’s not answered here?</p>
+        <a href="https://forms.gle/T1dvAPHCWske6D5PA" target="_blank">Submit Your Question</a>
+      </div>
     </div>
   </div>
 
