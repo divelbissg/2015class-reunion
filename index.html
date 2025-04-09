@@ -4,35 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Class of 2015 Reunion 🎓</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Segoe+UI&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1a1a1a 0%, #000000 50%, #333333 100%);
+      background: #000000;
       color: #ffd700;
       margin: 0;
       padding: 0;
       text-align: center;
-      animation: fadeIn 1s ease-in;
       min-height: 100vh;
       position: relative;
+      overflow-x: hidden;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .header-image {
+    /* Background Slideshow */
+    .background-slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: contain;
-      display: block;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
     }
+    .background-slideshow.active {
+      opacity: 1;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      z-index: 100;
+    }
+    .nav a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .nav a:hover {
+      color: #ffffff;
+    }
+    /* Main Content */
     .content {
-      padding: 20px;
+      position: relative;
+      z-index: 1;
+      padding: 80px 20px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     h1 {
+      font-family: 'Playfair Display', serif;
       color: #ffd700;
-      font-size: 2em;
+      font-size: 3em;
       text-shadow: 0 0 10px #ffd700;
       animation: glow 2s infinite alternate;
       margin: 20px 0;
@@ -44,10 +86,11 @@
     .info {
       font-size: 18px;
       margin: 20px auto;
-      background: rgba(255, 215, 0, 0.1);
-      padding: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
       border-radius: 8px;
       max-width: 600px;
+      border: 1px solid #ffd700;
     }
     .rsvp-button {
       background-color: #ffd700;
@@ -80,7 +123,9 @@
       overflow-x: auto;
       white-space: nowrap;
       padding: 20px 0;
-      background: rgba(255, 215, 0, 0.05);
+      background: rgba(0, 0, 0, 0.6);
+      border-top: 1px solid #ffd700;
+      border-bottom: 1px solid #ffd700;
     }
     .gallery img {
       height: 200px;
@@ -141,14 +186,15 @@
     .footer {
       font-size: 12px;
       margin: 20px auto;
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(0, 0, 0, 0.6);
       padding: 15px;
       border-radius: 8px;
       max-width: 600px;
+      border: 1px solid #ffd700;
     }
     @media (max-width: 700px) {
       h1 {
-        font-size: 1.5em;
+        font-size: 2em;
       }
       .info {
         font-size: 14px;
@@ -175,15 +221,31 @@
         font-size: 10px;
         margin: 10px;
       }
+      .nav a {
+        font-size: 14px;
+        margin: 0 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header Image -->
-  <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/banner.png?raw=true" alt="Reunion Header" class="header-image">
+  <!-- Background Slideshow -->
+  <div class="background-slideshow" id="bg1"></div>
+  <div class="background-slideshow" id="bg2"></div>
+  <div class="background-slideshow" id="bg3"></div>
+  <div class="overlay"></div>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <a href="#details">Details</a>
+    <a href="#whos-coming">Who's Coming</a>
+    <a href="#location">Location</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank">Register Now</a>
+  </div>
 
   <!-- Main Content -->
-  <div class="content">
+  <div class="content" id="details">
     <h1><span class="emoji-spin">🥂</span> Apache Junction High School Class of 2015 - 10 Year Reunion <span class="emoji-spin">🎓</span></h1>
     
     <div class="info">
@@ -233,7 +295,31 @@
   </div>
 
   <script>
-    // Countdown timer (updated to October 11, 2025)
+    // Background Slideshow
+    const backgrounds = [
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015B.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015C.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015h.jpg?raw=true"
+    ];
+    let currentBgIndex = 0;
+
+    function changeBackground() {
+      const bgElements = document.querySelectorAll(".background-slideshow");
+      bgElements.forEach((bg, index) => {
+        bg.classList.remove("active");
+        if (index === currentBgIndex) {
+          bg.style.backgroundImage = `url(${backgrounds[index]})`;
+          bg.classList.add("active");
+        }
+      });
+      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+    }
+
+    // Initial background
+    changeBackground();
+    setInterval(changeBackground, 10000);
+
+    // Countdown timer
     const reunionDate = new Date("October 11, 2025 17:00:00").getTime();
     const countdownElement = document.getElementById("countdown");
 
@@ -287,7 +373,6 @@
       slideshowImage.src = galleryImages[currentIndex].src;
     });
 
-    // Close slideshow when clicking outside the image
     slideshow.addEventListener("click", (e) => {
       if (e.target === slideshow) {
         slideshow.style.display = "none";
