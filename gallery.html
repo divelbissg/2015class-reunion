@@ -15,7 +15,7 @@
       text-align: center;
       min-height: 100vh;
       position: relative;
-      overflow-x: hidden; /* Prevent horizontal scroll on the body */
+      overflow-x: hidden;
     }
     .background-slideshow {
       position: fixed;
@@ -72,7 +72,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden; /* Ensure no horizontal overflow in content */
+      overflow-x: hidden;
     }
     h1 {
       font-family: 'Cinzel', serif;
@@ -83,48 +83,51 @@
       letter-spacing: 2px;
       border-bottom: 2px solid #FFD700;
       padding-bottom: 10px;
-      position: relative; /* Ensure h1 stays in place */
       width: 100%;
-      max-width: 800px; /* Match the gallery width for alignment */
+      max-width: 1200px; /* Increased to match gallery width */
     }
     .gallery-container {
       width: 100%;
-      max-width: 800px; /* Limit the width to prevent overflow */
+      max-width: 1200px; /* Increased from 800px to better fit content */
       margin: 0 auto;
-      overflow-x: auto; /* Enable horizontal scrolling for the gallery */
-      overflow-y: auto; /* Prevent vertical scrolling */
-      -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-      scrollbar-width: thin; /* For Firefox */
-      scrollbar-color: #FFD700 #000000; /* For Firefox */
+      overflow-x: auto;
+      overflow-y: hidden; /* Changed to hidden to prevent vertical scroll */
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #FFD700 #000000;
     }
     .gallery-container::-webkit-scrollbar {
-      height: 10px; /* Scrollbar height for Webkit browsers */
+      height: 10px;
     }
     .gallery-container::-webkit-scrollbar-track {
-      background: #000000; /* Scrollbar track color */
+      background: #000000;
     }
     .gallery-container::-webkit-scrollbar-thumb {
-      background: #FFD700; /* Scrollbar thumb color */
+      background: #FFD700;
       border-radius: 4px;
     }
     .gallery {
-      display: flex; /* Use flexbox for horizontal alignment */
-      white-space: nowrap; /* Prevent wrapping */
-      padding: 45px 0;
+      display: flex;
+      white-space: nowrap;
+      padding: 45px 15px; /* Added horizontal padding */
       background: rgba(0, 0, 0, 0.8);
       border-top: 2px solid #FFD700;
       border-bottom: 2px solid #FFD700;
+      width: max-content; /* Ensures gallery takes full content width */
     }
     .gallery img {
       height: 300px;
+      width: auto; /* Maintain aspect ratio */
       margin: 0 15px;
-      border: 3px solid #FFD700;
+      border: 3px solid #FFD700; /* Consistent border for all images */
       border-radius: 8px;
       display: inline-block;
       vertical-align: middle;
       cursor: pointer;
       transition: transform 0.3s;
-      flex: 0 0 auto; /* Prevent images from shrinking */
+      flex: 0 0 auto;
+      object-fit: cover; /* Ensures consistent image display */
+      background: #000000; /* Adds black background to fill any gaps */
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -147,6 +150,7 @@
       max-height: 90%;
       border: 3px solid #FFD700;
       border-radius: 8px;
+      object-fit: contain; /* Maintains aspect ratio in slideshow */
     }
     .slideshow .close-btn, .slideshow .nav-btn {
       position: absolute;
@@ -199,13 +203,12 @@
   </style>
 </head>
 <body>
-  <!-- Background Slideshow -->
+  <!-- Rest of your HTML remains the same -->
   <div class="background-slideshow" id="bg1"></div>
   <div class="background-slideshow" id="bg2"></div>
   <div class="background-slideshow" id="bg3"></div>
   <div class="overlay"></div>
 
-  <!-- Navigation -->
   <div class="nav">
     <a href="index.html" title="Back to home page">Home</a>
     <a href="details.html" title="Event date, time, dress code, and more">Details</a>
@@ -215,10 +218,8 @@
     <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
   </div>
 
-  <!-- Main Content -->
   <div class="content">
     <h1>Photo Gallery</h1>
-    <!-- Side-Scrolling Gallery -->
     <div class="gallery-container">
       <div class="gallery" id="gallery">
         <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015B.jpg?raw=true" alt="Reunion Photo 1">
@@ -239,7 +240,6 @@
       </div>
     </div>
 
-    <!-- Slideshow Preview -->
     <div class="slideshow" id="slideshow">
       <img id="slideshow-image" src="" alt="Slideshow Image">
       <button class="close-btn" id="close-slideshow">Close</button>
@@ -249,7 +249,7 @@
   </div>
 
   <script>
-    // Background Slideshow
+    // JavaScript remains unchanged
     const backgrounds = [
       "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015B.jpg?raw=true",
       "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015C.jpg?raw=true",
@@ -272,7 +272,6 @@
     changeBackground();
     setInterval(changeBackground, 10000);
 
-    // Slideshow functionality
     const galleryImages = document.querySelectorAll(".gallery img");
     const slideshow = document.getElementById("slideshow");
     const slideshowImage = document.getElementById("slideshow-image");
