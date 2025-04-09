@@ -212,7 +212,7 @@
 <div class="footer">
       <p>~1 guest per person - 21+ event (please no children permitted)~</p>
     </div>
-  <!-- Slideshow Preview -->
+ <!-- Slideshow Preview -->
   <div class="slideshow" id="slideshow">
     <img id="slideshow-image" src="" alt="Slideshow Image">
     <button class="close-btn" id="close-slideshow">Close</button>
@@ -222,7 +222,7 @@
 
   <script>
     // Countdown timer
-    const reunionDate = new Date("October 11, 2025 18:00:00").getTime();
+    const reunionDate = new Date("August 2, 2025 18:00:00").getTime();
     const countdownElement = document.getElementById("countdown");
 
     function updateCountdown() {
@@ -230,4 +230,57 @@
       const timeLeft = reunionDate - now;
 
       const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 *
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s until the big night!`;
+
+      if (timeLeft < 0) {
+        countdownElement.innerHTML = "The reunion is here! Let’s party! 🎉";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Slideshow functionality
+    const galleryImages = document.querySelectorAll(".gallery img");
+    const slideshow = document.getElementById("slideshow");
+    const slideshowImage = document.getElementById("slideshow-image");
+    const closeBtn = document.getElementById("close-slideshow");
+    const prevBtn = document.getElementById("prev-slide");
+    const nextBtn = document.getElementById("next-slide");
+    let currentIndex = 0;
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        currentIndex = index;
+        slideshowImage.src = img.src;
+        slideshow.style.display = "flex";
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      slideshow.style.display = "none";
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      slideshowImage.src = galleryImages[currentIndex].src;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      slideshowImage.src = galleryImages[currentIndex].src;
+    });
+
+    // Close slideshow when clicking outside the image
+    slideshow.addEventListener("click", (e) => {
+      if (e.target === slideshow) {
+        slideshow.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
