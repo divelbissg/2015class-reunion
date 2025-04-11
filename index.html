@@ -183,69 +183,79 @@
   </div>
 
   <script>
-    // Background Slideshow
-    const backgrounds = [
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
-    ];
-    let currentBgIndex = 0;
+// Background Slideshow
+const backgrounds = [
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
+  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
+];
 
-    function changeBackground() {
-      const bgElements = document.querySelectorAll(".background-slideshow");
-      bgElements.forEach((bg, index) => {
-        bg.classList.remove("active");
-        if (index === currentBgIndex) {
-          bg.style.backgroundImage = `url(${backgrounds[index]})`;
-          bg.classList.add("active");
-        }
-      });
-      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-    }
+// Fisher-Yates shuffle to randomize array
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
-    changeBackground();
-    setInterval(changeBackground, 10000);
+// Shuffle backgrounds initially
+let shuffledBackgrounds = [...backgrounds];
+shuffleArray(shuffledBackgrounds);
 
-    // Countdown timer
-    const reunionDate = new Date("October 11, 2025 17:00:00").getTime();
-    const countdownElement = document.getElementById("countdown");
+let currentBgIndex = 0;
+let usedIndices = []; // Track used indices to avoid immediate repeats
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const timeLeft = reunionDate - now;
+function changeBackground() {
+  const bgElements = document.querySelectorAll(".background-slideshow");
+  bgElements.forEach(bg => bg.classList.remove("active"));
 
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  // If all images have been used, reset and reshuffle
+  if (usedIndices.length >= shuffledBackgrounds.length) {
+    usedIndices = [];
+    shuffleArray(shuffledBackgrounds);
+  }
 
-      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  // Select a random index that hasn't been used yet
+  let nextIndex;
+  do {
+    nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
+  } while (usedIndices.includes(nextIndex));
 
-      if (timeLeft < 0) {
-        countdownElement.innerHTML = "The reunion is here!";
-      }
-    }
+  usedIndices.push(nextIndex);
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
+  // Apply the new background to the current div
+  const currentBg = bgElements[currentBgIndex];
+  currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
+  currentBg.classList.add("active");
+
+  // Move to the next div for the next transition
+  currentBgIndex = (currentBgIndex + 1) % bgElements.length;
+}
+
+// Initialize the first background
+changeBackground();
+
+// Change background every 10 seconds
+setInterval(changeBackground, 10000);
+</script>
 </body>
 </html>
