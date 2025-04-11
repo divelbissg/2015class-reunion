@@ -84,54 +84,80 @@
       border-bottom: 2px solid #FFD700;
       padding-bottom: 10px;
       width: 100%;
-      max-width: 1200px; /* Increased to match gallery width */
+      max-width: 1200px;
     }
     .gallery-container {
       width: 100%;
-      max-width: 1200px; /* Increased from 800px to better fit content */
+      max-width: 1200px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .main-image-container {
+      width: 60%;
+      margin-bottom: 20px;
+    }
+    .main-image {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+      border: 3px solid #FFD700;
+      border-radius: 8px;
+      background: #000000;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .main-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #FFD700;
+    }
+    .thumbnail-container {
+      width: 100%;
       overflow-x: auto;
-      overflow-y: hidden; /* Changed to hidden to prevent vertical scroll */
+      overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: #FFD700 #000000;
     }
-    .gallery-container::-webkit-scrollbar {
+    .thumbnail-container::-webkit-scrollbar {
       height: 10px;
     }
-    .gallery-container::-webkit-scrollbar-track {
+    .thumbnail-container::-webkit-scrollbar-track {
       background: #000000;
     }
-    .gallery-container::-webkit-scrollbar-thumb {
+    .thumbnail-container::-webkit-scrollbar-thumb {
       background: #FFD700;
       border-radius: 4px;
     }
-    .gallery {
+    .thumbnail-gallery {
       display: flex;
       white-space: nowrap;
-      padding: 45px 15px; /* Added horizontal padding */
+      padding: 15px;
       background: rgba(0, 0, 0, 0.8);
       border-top: 2px solid #FFD700;
       border-bottom: 2px solid #FFD700;
-      width: max-content; /* Ensures gallery takes full content width */
+      width: max-content;
     }
-    .gallery img {
-      height: 300px;
-      width: auto; /* Maintain aspect ratio */
-      margin: 0 15px;
-      border: 3px solid #FFD700; /* Consistent border for all images */
-      border-radius: 8px;
-      display: inline-block;
-      vertical-align: middle;
+    .thumbnail-gallery img {
+      height: 100px;
+      width: auto;
+      margin: 0 10px;
+      border: 2px solid #FFD700;
+      border-radius: 5px;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.3s, opacity 0.3s;
       flex: 0 0 auto;
-      object-fit: cover; /* Ensures consistent image display */
-      background: #000000; /* Adds black background to fill any gaps */
+      object-fit: cover;
+      background: #000000;
+      opacity: 0.7;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #FFD700;
+    .thumbnail-gallery img:hover,
+    .thumbnail-gallery img.active {
+      transform: scale(1.1);
+      opacity: 1;
+      box-shadow: 0 0 10px #FFD700;
     }
     .slideshow {
       display: none;
@@ -150,7 +176,7 @@
       max-height: 90%;
       border: 3px solid #FFD700;
       border-radius: 8px;
-      object-fit: contain; /* Maintains aspect ratio in slideshow */
+      object-fit: contain;
     }
     .slideshow .close-btn, .slideshow .nav-btn {
       position: absolute;
@@ -184,8 +210,15 @@
       h1 {
         font-size: 2em;
       }
-      .gallery img {
-        height: 150px;
+      .main-image-container {
+        width: 90%;
+      }
+      .main-image {
+        max-height: 300px;
+      }
+      .thumbnail-gallery img {
+        height: 60px;
+        margin: 0 5px;
       }
       .slideshow img {
         max-width: 95%;
@@ -203,7 +236,6 @@
   </style>
 </head>
 <body>
-  <!-- Rest of your HTML remains the same -->
   <div class="background-slideshow" id="bg1"></div>
   <div class="background-slideshow" id="bg2"></div>
   <div class="background-slideshow" id="bg3"></div>
@@ -221,79 +253,13 @@
   <div class="content">
     <h1>Photo Gallery</h1>
     <div class="gallery-container">
-      <div class="gallery" id="gallery">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015B.jpg?raw=true" alt="Reunion Photo 1">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015C.jpg?raw=true" alt="Reunion Photo 2">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015h.jpg?raw=true" alt="Reunion Photo 3">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015i.jpg?raw=true" alt="Reunion Photo 4">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015A.jpg?raw=true" alt="Reunion Photo 5">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015e.jpg?raw=true" alt="Reunion Photo 6">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015k.jpg?raw=true" alt="Reunion Photo 7">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015D.jpg?raw=true" alt="Reunion Photo 8">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015f.jpg?raw=true" alt="Reunion Photo 8">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015g.jpg?raw=true" alt="Reunion Photo 8">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015j.jpg?raw=true" alt="Reunion Photo 8">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4174.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4175.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4176.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4177.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4178.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4179.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4180.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4181.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4182.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4183.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4184.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4185.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4186.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4187.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4188.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4189.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4190.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4191.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4192.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4193.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4194.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4195.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4196.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4197.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4198.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4199.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4200.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4201.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4202.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4203.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4203.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4204.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4205.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4206.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4207.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4208.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4209.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4210.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4211.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4212.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4213.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4214.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4215.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4216.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4217.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4218.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4219.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4241.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4242.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4243.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4244.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4245.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4246.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4247.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4248.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4249.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4250.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4251.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4252.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4253.jpg?raw=true" alt="Reunion Photo 9">
-        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4254.jpg?raw=true" alt="Reunion Photo 9">
+      <div class="main-image-container">
+        <img class="main-image" id="main-image" src="" alt="Main Reunion Photo">
+      </div>
+      <div class="thumbnail-container">
+        <div class="thumbnail-gallery" id="thumbnail-gallery">
+          <!-- Thumbnails will be populated by JavaScript -->
+        </div>
       </div>
     </div>
 
@@ -306,7 +272,7 @@
   </div>
 
   <script>
-    // JavaScript remains unchanged
+    // Background slideshow
     const backgrounds = [
       "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4220.jpg?raw=true",
       "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4221.jpg?raw=true",
@@ -347,34 +313,153 @@
     changeBackground();
     setInterval(changeBackground, 10000);
 
-    const galleryImages = document.querySelectorAll(".gallery img");
+    // Gallery images
+    const images = [
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015B.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015C.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015h.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015i.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015A.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015e.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015k.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015D.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015f.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015g.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/classsof2015j.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4174.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4175.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4176.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4177.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4178.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4179.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4180.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4181.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4182.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4183.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4184.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4185.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4186.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4187.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4188.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4189.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4190.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4191.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4192.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4193.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4194.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4195.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4196.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4197.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4198.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4199.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4200.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4201.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4202.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4203.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4204.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4205.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4206.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4207.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4208.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4209.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4210.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4211.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4212.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4213.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4214.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4215.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4216.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4217.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4218.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4219.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4241.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4242.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4243.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4244.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4245.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4246.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4247.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4248.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4249.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4250.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4251.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4252.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4253.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4254.jpg?raw=true"
+    ];
+
+    // Randomize images
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    const randomizedImages = shuffle([...images]);
+
+    // Populate thumbnail gallery
+    const thumbnailGallery = document.getElementById("thumbnail-gallery");
+    randomizedImages.forEach((src, index) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = `Reunion Photo ${index + 1}`;
+      img.dataset.index = index;
+      thumbnailGallery.appendChild(img);
+    });
+
+    // Initialize main image
+    const mainImage = document.getElementById("main-image");
+    const thumbnailImages = document.querySelectorAll(".thumbnail-gallery img");
+    let currentIndex = 0;
+
+    function updateMainImage(index) {
+      mainImage.src = randomizedImages[index];
+      thumbnailImages.forEach(img => img.classList.remove("active"));
+      thumbnailImages[index].classList.add("active");
+      // Scroll thumbnail into view
+      thumbnailImages[index].scrollIntoView({ behavior: "smooth", inline: "center" });
+    }
+
+    // Set initial main image
+    updateMainImage(currentIndex);
+
+    // Thumbnail click handler
+    thumbnailImages.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        currentIndex = index;
+        updateMainImage(index);
+      });
+    });
+
+    // Main image click to open slideshow
+    mainImage.addEventListener("click", () => {
+      slideshowImage.src = mainImage.src;
+      slideshow.style.display = "flex";
+    });
+
+    // Slideshow controls
     const slideshow = document.getElementById("slideshow");
     const slideshowImage = document.getElementById("slideshow-image");
     const closeBtn = document.getElementById("close-slideshow");
     const prevBtn = document.getElementById("prev-slide");
     const nextBtn = document.getElementById("next-slide");
-    let currentIndex = 0;
-
-    galleryImages.forEach((img, index) => {
-      img.addEventListener("click", () => {
-        currentIndex = index;
-        slideshowImage.src = img.src;
-        slideshow.style.display = "flex";
-      });
-    });
 
     closeBtn.addEventListener("click", () => {
       slideshow.style.display = "none";
     });
 
     prevBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      slideshowImage.src = galleryImages[currentIndex].src;
+      currentIndex = (currentIndex - 1 + randomizedImages.length) % randomizedImages.length;
+      slideshowImage.src = randomizedImages[currentIndex];
+      updateMainImage(currentIndex);
     });
 
     nextBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      slideshowImage.src = galleryImages[currentIndex].src;
+      currentIndex = (currentIndex + 1) % randomizedImages.length;
+      slideshowImage.src = randomizedImages[currentIndex];
+      updateMainImage(currentIndex);
     });
 
     slideshow.addEventListener("click", (e) => {
