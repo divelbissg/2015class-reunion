@@ -24,13 +24,14 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background-size: cover;
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
       opacity: 0;
       transition: opacity 2s ease-in-out;
     }
     .background-slideshow.active {
-      opacity: 1;
+      opacity: 0.5; /* Reduced opacity for better content visibility */
     }
     .overlay {
       position: fixed;
@@ -97,6 +98,8 @@
     .main-image-container {
       width: 70%;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 10; /* Ensure main image is above other elements */
     }
     .main-image {
       width: 100%;
@@ -313,27 +316,30 @@
       "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
     ];
     let currentBgIndex = 0;
-    const bgSlideshow = document.getElementById("bg-slideshow");
+    const bgElements = document.querySelectorAll(".background-slideshow");
 
     function changeBackground() {
-      bgSlideshow.classList.remove("active");
-      setTimeout(() => {
-        bgSlideshow.style.backgroundImage = `url(${backgrounds[currentBgIndex]})`;
-        bgSlideshow.classList.add("active");
-        currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-      }, 2000);
+      bgElements.forEach((el, index) => {
+        el.classList.remove("active");
+        if (index === currentBgIndex) {
+          el.style.backgroundImage = `url(${backgrounds[index]})`;
+          el.classList.add("active");
+        }
+      });
+      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
     }
 
+    // Preload first background image
     const firstImage = new Image();
     firstImage.src = backgrounds[0];
     firstImage.onload = () => {
-      bgSlideshow.style.backgroundImage = `url(${backgrounds[0]})`;
-      bgSlideshow.classList.add("active");
+      bgElements[0].style.backgroundImage = `url(${backgrounds[0]})`;
+      bgElements[0].classList.add("active");
       setInterval(changeBackground, 10000);
     };
     firstImage.onerror = () => {
       console.error("Failed to load first background image:", backgrounds[0]);
-      bgSlideshow.style.background = "#000000";
+      bgElements[0].style.background = "#000000";
     };
 
     // Gallery Images (pre-randomized order)
@@ -438,8 +444,10 @@
       mainImage.src = validImages[index];
       const thumbnailImages = document.querySelectorAll(".thumbnail-gallery img");
       thumbnailImages.forEach(img => img.classList.remove("active"));
-      thumbnailImages[index].classList.add("active");
-      thumbnailImages[index].scrollIntoView({ behavior: "smooth", inline: "center" });
+      if (thumbnailImages[index]) {
+        thumbnailImages[index].classList.add("active");
+        thumbnailImages[index].scrollIntoView({ behavior: "smooth", inline: "center" });
+      }
     }
 
     thumbnailGallery.addEventListener("click", (e) => {
@@ -450,7 +458,8 @@
       }
     });
 
-    mainImage.addEventListener("click", () => {
+    mainImage.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent event bubbling
       if (validImages.length === 0) return;
       slideshowImage.src = mainImage.src;
       slideshow.style.display = "flex";
