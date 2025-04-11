@@ -233,7 +233,27 @@
   </style>
 </head>
 <body>
-  <div class="background-slideshow" id="bg-slideshow"></div>
+  <div class="background-slideshow" id="bg1"></div>
+  <div class="background-slideshow" id="bg2"></div>
+  <div class="background-slideshow" id="bg3"></div>
+  <div class="background-slideshow" id="bg4"></div>
+  <div class="background-slideshow" id="bg5"></div>
+  <div class="background-slideshow" id="bg6"></div>
+  <div class="background-slideshow" id="bg7"></div>
+  <div class="background-slideshow" id="bg8"></div>
+  <div class="background-slideshow" id="bg9"></div>
+  <div class="background-slideshow" id="bg10"></div>
+  <div class="background-slideshow" id="bg11"></div>
+  <div class="background-slideshow" id="bg12"></div>
+  <div class="background-slideshow" id="bg13"></div>
+  <div class="background-slideshow" id="bg14"></div>
+  <div class="background-slideshow" id="bg15"></div>
+  <div class="background-slideshow" id="bg16"></div>
+  <div class="background-slideshow" id="bg17"></div>
+  <div class="background-slideshow" id="bg18"></div>
+  <div class="background-slideshow" id="bg19"></div>
+  <div class="background-slideshow" id="bg20"></div>
+  <div class="background-slideshow" id="bg21"></div>
   <div class="overlay"></div>
 
   <div class="nav">
@@ -265,31 +285,32 @@
       <button class="nav-btn next" id="next-slide">Next</button>
     </div>
   </div>
+  <p>See a photo you want taken down? Simply send in a message to the Send Your Question link on the FAQ page.</p>
 
   <script>
     // Background Slideshow
     const backgrounds = [
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4222.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4223.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4224.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4225.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4226.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4227.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4228.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4229.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4230.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4231.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4232.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4233.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4234.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4235.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4236.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4237.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4238.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4239.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4240.jpg"
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
     ];
     let currentBgIndex = 0;
     const bgSlideshow = document.getElementById("bg-slideshow");
