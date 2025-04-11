@@ -48,7 +48,7 @@
       background: rgba(0, 0, 0, 0.9);
       padding: 15px 0;
       z-index: 100;
-      border-bottom: 1px solid #FFD700; /* Thinner border */
+      border-bottom: 1px solid #FFD700;
     }
     .nav a {
       font-family: 'Poiret One', cursive;
@@ -67,7 +67,7 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 80px 20px; /* Reduced padding for a tighter layout */
+      padding: 80px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -78,13 +78,13 @@
       font-family: 'Cinzel', serif;
       color: #FFD700;
       font-size: 3em;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Softer shadow */
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
       margin: 0 0 30px;
       letter-spacing: 2px;
       padding-bottom: 8px;
       width: 100%;
       max-width: 1200px;
-      border-bottom: 1px solid #FFD700; /* Thinner border */
+      border-bottom: 1px solid #FFD700;
     }
     .gallery-container {
       width: 100%;
@@ -95,7 +95,7 @@
       align-items: center;
     }
     .main-image-container {
-      width: 70%; /* Slightly wider for better focus */
+      width: 70%;
       margin-bottom: 20px;
     }
     .main-image {
@@ -103,15 +103,15 @@
       height: auto;
       max-height: 500px;
       object-fit: contain;
-      border: 1px solid #FFD700; /* Thinner border */
-      border-radius: 5px; /* Softer corners */
+      border: 1px solid #FFD700;
+      border-radius: 5px;
       background: #000000;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .main-image:hover {
-      transform: scale(1.03); /* Subtler zoom */
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5); /* Softer glow */
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
     .thumbnail-container {
       width: 100%;
@@ -122,7 +122,7 @@
       scrollbar-color: #FFD700 rgba(0, 0, 0, 0.8);
     }
     .thumbnail-container::-webkit-scrollbar {
-      height: 6px; /* Thinner scrollbar */
+      height: 6px;
     }
     .thumbnail-container::-webkit-scrollbar-track {
       background: rgba(0, 0, 0, 0.8);
@@ -134,16 +134,16 @@
     .thumbnail-gallery {
       display: flex;
       white-space: nowrap;
-      padding: 10px 0; /* Reduced padding */
+      padding: 10px 0;
       background: rgba(0, 0, 0, 0.8);
       width: max-content;
     }
     .thumbnail-gallery img {
       height: 100px;
       width: auto;
-      margin: 0 8px; /* Reduced spacing */
-      border: 1px solid #FFD700; /* Thinner border */
-      border-radius: 4px; /* Softer corners */
+      margin: 0 8px;
+      border: 1px solid #FFD700;
+      border-radius: 4px;
       cursor: pointer;
       transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
       flex: 0 0 auto;
@@ -153,9 +153,9 @@
     }
     .thumbnail-gallery img:hover,
     .thumbnail-gallery img.active {
-      transform: scale(1.08); /* Subtler zoom */
+      transform: scale(1.08);
       opacity: 1;
-      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5); /* Softer glow */
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
     }
     .slideshow {
       display: none;
@@ -172,8 +172,8 @@
     .slideshow img {
       max-width: 100%;
       max-height: 90%;
-      border: 1px solid #FFD700; /* Thinner border */
-      border-radius: 5px; /* Softer corners */
+      border: 1px solid #FFD700;
+      border-radius: 5px;
       object-fit: contain;
     }
     .slideshow .close-btn, .slideshow .nav-btn {
@@ -181,7 +181,7 @@
       background: #FFD700;
       color: #000000;
       border: none;
-      padding: 10px 20px; /* Slightly smaller buttons */
+      padding: 10px 20px;
       font-size: 14px;
       font-weight: 600;
       text-transform: uppercase;
@@ -191,7 +191,7 @@
     }
     .slideshow .close-btn:hover, .slideshow .nav-btn:hover {
       background: #E5E5E5;
-      transform: scale(1.05); /* Subtle hover effect */
+      transform: scale(1.05);
     }
     .slideshow .close-btn {
       top: 15px;
@@ -271,7 +271,7 @@
   </div>
 
   <script>
-    // Background Slideshow
+    // Background Slideshow (unchanged)
     const backgrounds = [
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
@@ -304,7 +304,7 @@
         bgSlideshow.style.backgroundImage = `url(${backgrounds[currentBgIndex]})`;
         bgSlideshow.classList.add("active");
         currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-      }, 2000); // Match transition duration
+      }, 2000);
     }
 
     const firstBgImage = new Image();
@@ -319,116 +319,127 @@
       bgSlideshow.style.background = "#000000";
     };
 
-    // Gallery Images (No Randomization)
+    // Gallery Images (pre-randomized order)
     const images = [
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015B.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015C.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015h.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015i.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015A.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015e.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015k.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015D.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015f.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015g.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015j.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4174.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4175.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4176.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4177.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4178.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4179.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4180.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4181.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4182.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4183.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4184.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4185.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4186.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4187.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4188.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4189.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4190.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4191.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4192.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4193.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4194.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4195.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4196.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4197.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4198.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4199.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4200.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4201.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4202.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4203.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4204.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4205.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4206.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4207.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4208.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4209.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4210.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4211.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4212.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4213.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4214.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4215.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4216.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4217.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4218.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4219.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4241.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4242.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4243.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015i.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4244.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4245.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4246.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4247.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4248.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4182.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015g.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4215.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4193.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015C.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4249.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4250.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4251.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4178.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015k.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4201.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4252.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015D.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4187.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4221.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015B.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4199.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4241.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4174.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015A.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4209.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4180.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015j.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4218.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4250.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4196.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015e.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4246.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4176.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4203.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015f.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4185.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4212.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4191.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4243.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4179.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015h.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4208.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4254.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4189.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4217.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4195.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4248.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4175.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4202.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4183.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4210.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4198.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4245.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4177.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4205.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4186.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4214.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4192.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4251.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4181.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4219.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4197.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4247.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4200.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4188.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4216.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4194.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4253.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4254.jpg"
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4184.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4211.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4190.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4242.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4207.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4213.jpg"
     ];
 
-    // Populate thumbnail gallery (no shuffling)
+    // Populate thumbnail gallery with error handling
     const thumbnailGallery = document.getElementById("thumbnail-gallery");
+    const validImages = []; // Track images that load successfully
+
     images.forEach((src, index) => {
       const img = document.createElement("img");
       img.src = src;
       img.alt = `Reunion Photo ${index + 1}`;
-      img.dataset.index = index;
-      thumbnailGallery.appendChild(img);
+      img.dataset.index = validImages.length; // Index based on valid images
+
+      // Check if image loads
+      img.onload = () => {
+        validImages.push(src);
+        thumbnailGallery.appendChild(img);
+        if (validImages.length === 1) updateMainImage(0); // Set first valid image
+      };
+      img.onerror = () => {
+        console.error(`Failed to load gallery image: ${src}`);
+      };
     });
 
     // Initialize main image
     const mainImage = document.getElementById("main-image");
-    const thumbnailImages = document.querySelectorAll(".thumbnail-gallery img");
     let currentIndex = 0;
 
     function updateMainImage(index) {
-      mainImage.src = images[index];
+      if (validImages.length === 0) return; // No valid images
+      mainImage.src = validImages[index];
+      const thumbnailImages = document.querySelectorAll(".thumbnail-gallery img");
       thumbnailImages.forEach(img => img.classList.remove("active"));
       thumbnailImages[index].classList.add("active");
       thumbnailImages[index].scrollIntoView({ behavior: "smooth", inline: "center" });
     }
 
-    // Set initial main image
-    updateMainImage(currentIndex);
-
     // Thumbnail click handler
-    thumbnailImages.forEach((img, index) => {
-      img.addEventListener("click", () => {
-        currentIndex = index;
-        updateMainImage(index);
-      });
+    thumbnailGallery.addEventListener("click", (e) => {
+      const img = e.target.closest("img");
+      if (img) {
+        currentIndex = parseInt(img.dataset.index);
+        updateMainImage(currentIndex);
+      }
     });
 
     // Main image click to open slideshow
     mainImage.addEventListener("click", () => {
+      if (validImages.length === 0) return;
       slideshowImage.src = mainImage.src;
       slideshow.style.display = "flex";
     });
@@ -445,14 +456,16 @@
     });
 
     prevBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      slideshowImage.src = images[currentIndex];
+      if (validImages.length === 0) return;
+      currentIndex = (currentIndex - 1 + validImages.length) % validImages.length;
+      slideshowImage.src = validImages[currentIndex];
       updateMainImage(currentIndex);
     });
 
     nextBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      slideshowImage.src = images[currentIndex];
+      if (validImages.length === 0) return;
+      currentIndex = (currentIndex + 1) % validImages.length;
+      slideshowImage.src = validImages[currentIndex];
       updateMainImage(currentIndex);
     });
 
