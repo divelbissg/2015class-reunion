@@ -48,7 +48,7 @@
       background: rgba(0, 0, 0, 0.9);
       padding: 15px 0;
       z-index: 100;
-      border-bottom: 1px solid #FFD700;
+      border-bottom: 2px solid #FFD700;
     }
     .nav a {
       font-family: 'Poiret One', cursive;
@@ -67,7 +67,7 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 80px 20px;
+      padding: 100px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -77,11 +77,11 @@
       font-family: 'Cinzel', serif;
       color: #FFD700;
       font-size: 3em;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-      margin: 0 0 30px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      margin: 0 0 40px;
       letter-spacing: 2px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #FFD700;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 10px;
     }
     .faq {
       max-width: 800px;
@@ -90,13 +90,54 @@
       background: rgba(0, 0, 0, 0.8);
       padding: 30px;
       border-radius: 8px;
-      border: 1px solid #FFD700;
+      border: 2px solid #FFD700;
+    }
+    .faq h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5em;
+      color: #FFD700;
+      margin: 25px 0 15px;
+      letter-spacing: 1px;
     }
     .faq p {
+      font-size: 1.1em;
+      color: #E5E5E5;
+      margin: 0 0 20px;
+      line-height: 1.8;
+    }
+    .faq a {
+      color: #FFD700;
+      text-decoration: underline;
+    }
+    .faq a:hover {
+      color: #E5E5E5;
+    }
+    .submit-question {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .submit-question p {
       font-size: 1.2em;
       color: #E5E5E5;
-      margin: 15px 0;
-      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+    .submit-question a {
+      background-color: #FFD700;
+      color: #000000;
+      padding: 10px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all 0.3s;
+      border: 2px solid #FFD700;
+    }
+    .submit-question a:hover {
+      background-color: #E5E5E5;
+      color: #000000;
+      box-shadow: 0 0 15px #FFD700;
     }
     @media (max-width: 700px) {
       h1 {
@@ -106,8 +147,18 @@
         margin: 10px;
         padding: 20px;
       }
+      .faq h2 {
+        font-size: 1.2em;
+      }
       .faq p {
         font-size: 1em;
+      }
+      .submit-question p {
+        font-size: 1em;
+      }
+      .submit-question a {
+        padding: 8px 20px;
+        font-size: 14px;
       }
       .nav a {
         font-size: 14px;
@@ -117,9 +168,31 @@
   </style>
 </head>
 <body>
-  <div class="background-slideshow" id="bg-slideshow"></div>
+  <!-- Background Slideshow -->
+  <div class="background-slideshow" id="bg1"></div>
+  <div class="background-slideshow" id="bg2"></div>
+  <div class="background-slideshow" id="bg3"></div>
+  <div class="background-slideshow" id="bg4"></div>
+  <div class="background-slideshow" id="bg5"></div>
+  <div class="background-slideshow" id="bg6"></div>
+  <div class="background-slideshow" id="bg7"></div>
+  <div class="background-slideshow" id="bg8"></div>
+  <div class="background-slideshow" id="bg9"></div>
+  <div class="background-slideshow" id="bg10"></div>
+  <div class="background-slideshow" id="bg11"></div>
+  <div class="background-slideshow" id="bg12"></div>
+  <div class="background-slideshow" id="bg13"></div>
+  <div class="background-slideshow" id="bg14"></div>
+  <div class="background-slideshow" id="bg15"></div>
+  <div class="background-slideshow" id="bg16"></div>
+  <div class="background-slideshow" id="bg17"></div>
+  <div class="background-slideshow" id="bg18"></div>
+  <div class="background-slideshow" id="bg19"></div>
+  <div class="background-slideshow" id="bg20"></div>
+  <div class="background-slideshow" id="bg21"></div>
   <div class="overlay"></div>
 
+  <!-- Navigation -->
   <div class="nav">
     <a href="index.html" title="Back to home page">Home</a>
     <a href="details.html" title="Event date, time, dress code, and more">Details</a>
@@ -129,62 +202,80 @@
     <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
   </div>
 
+  <!-- Main Content -->
   <div class="content">
     <h1>Frequently Asked Questions</h1>
     <div class="faq">
-      <p><strong>Q: When is the reunion?</strong><br>A: The date is TBD. Check the Details page for updates.</p>
-      <p><strong>Q: Where will it be held?</strong><br>A: The location is TBD. See the Location page for more info.</p>
-      <p><strong>Q: How do I RSVP?</strong><br>A: Click the RSVP link in the navigation to register.</p>
+      <h2>What is the date and time of the reunion?</h2>
+      <p>The Apache Junction High School Class of 2015 10-Year Reunion is scheduled for October 11, 2025, from 5:00 PM to 9:00 PM.</p>
+
+      <h2>Where will the reunion be held?</h2>
+      <p>The location is currently TBD. We’ll update all registered guests as soon as the venue is confirmed.</p>
+
+      <h2>What is the dress code?</h2>
+      <p>The dress code is Black & Gold Semi-Formal. We encourage you to embrace the theme with your attire!</p>
+
+      <h2>How much is the entry fee?</h2>
+      <p>The entry fee is $50 per guest, which includes access to the event, food, and entertainment.</p>
+
+      <h2>Can I bring a guest?</h2>
+      <p>Yes, you may bring one guest. Please note this is a 21+ event, and children are not permitted.</p>
+
+      <h2>How do I RSVP for the reunion?</h2>
+      <p>You can RSVP by clicking the “RSVP” link in the navigation bar or directly via <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank">this link</a>.</p>
+
+      <h2>Who can I contact for more information?</h2>
+      <p>For any questions or additional information, please contact our reunion committee at <a href="mailto:ajhs2015reunion@gmail.com">ajhs2015reunion@gmail.com</a>.</p>
+
+      <!-- New Section for Submitting Questions -->
+      <div class="submit-question">
+        <p>Have a question that’s not answered here?</p>
+        <a href="[YOUR_GOOGLE_FORM_LINK]" target="_blank">Submit Your Question</a>
+      </div>
     </div>
   </div>
 
   <script>
+    // Background Slideshow
     const backgrounds = [
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4222.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4223.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4224.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4225.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4226.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4227.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4228.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4229.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4230.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4231.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4232.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4233.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4234.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4235.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4236.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4237.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4238.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4239.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4240.jpg"
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
     ];
     let currentBgIndex = 0;
-    const bgSlideshow = document.getElementById("bg-slideshow");
 
     function changeBackground() {
-      bgSlideshow.classList.remove("active");
-      setTimeout(() => {
-        bgSlideshow.style.backgroundImage = `url(${backgrounds[currentBgIndex]})`;
-        bgSlideshow.classList.add("active");
-        currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-      }, 2000);
+      const bgElements = document.querySelectorAll(".background-slideshow");
+      bgElements.forEach((bg, index) => {
+        bg.classList.remove("active");
+        if (index === currentBgIndex) {
+          bg.style.backgroundImage = `url(${backgrounds[index]})`;
+          bg.classList.add("active");
+        }
+      });
+      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
     }
 
-    const firstImage = new Image();
-    firstImage.src = backgrounds[0];
-    firstImage.onload = () => {
-      bgSlideshow.style.backgroundImage = `url(${backgrounds[0]})`;
-      bgSlideshow.classList.add("active");
-      setInterval(changeBackground, 10000);
-    };
-    firstImage.onerror = () => {
-      console.error("Failed to load first background image:", backgrounds[0]);
-      bgSlideshow.style.background = "#000000";
-    };
+    changeBackground();
+    setInterval(changeBackground, 10000);
   </script>
 </body>
 </html>
