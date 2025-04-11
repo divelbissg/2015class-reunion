@@ -119,9 +119,7 @@
 </head>
 <body>
   <!-- Background Slideshow -->
-  <div class="background-slideshow" id="bg1"></div>
-  <div class="background-slideshow" id="bg2"></div>
-  <div class="background-slideshow" id="bg3"></div>
+  <div class="background-slideshow" id="bg-slideshow"></div>
   <div class="overlay"></div>
 
   <!-- Navigation -->
@@ -146,44 +144,56 @@
   <script>
     // Background Slideshow
     const backgrounds = [
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4220.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4221.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4222.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4223.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4224.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4225.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4226.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4227.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4228.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4229.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4230.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4231.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4232.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4233.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4234.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4235.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4236.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4237.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4238.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4239.jpg?raw=true",
-      "https://github.com/divelbissg/2015class-reunion/blob/main/IMG_4240.jpg?raw=true"
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4222.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4223.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4224.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4225.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4226.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4227.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4228.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4229.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4230.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4231.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4232.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4233.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4234.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4235.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4236.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4237.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4238.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4239.jpg",
+      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4240.jpg"
     ];
     let currentBgIndex = 0;
+    const bgSlideshow = document.getElementById("bg-slideshow");
 
     function changeBackground() {
-      const bgElements = document.querySelectorAll(".background-slideshow");
-      bgElements.forEach((bg, index) => {
-        bg.classList.remove("active");
-        if (index === currentBgIndex) {
-          bg.style.backgroundImage = `url(${backgrounds[index]})`;
-          bg.classList.add("active");
-        }
-      });
-      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+      // Fade out current image
+      bgSlideshow.classList.remove("active");
+      
+      // Wait for fade-out transition to complete
+      setTimeout(() => {
+        bgSlideshow.style.backgroundImage = `url(${backgrounds[currentBgIndex]})`;
+        bgSlideshow.classList.add("active");
+        currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+      }, 2000); // Match transition duration
     }
 
-    changeBackground();
-    setInterval(changeBackground, 10000);
+    // Preload first image and start slideshow
+    const firstImage = new Image();
+    firstImage.src = backgrounds[0];
+    firstImage.onload = () => {
+      bgSlideshow.style.backgroundImage = `url(${backgrounds[0]})`;
+      bgSlideshow.classList.add("active");
+      setInterval(changeBackground, 10000);
+    };
+    firstImage.onerror = () => {
+      console.error("Failed to load first background image:", backgrounds[0]);
+      // Fallback: Set a solid background
+      bgSlideshow.style.background = "#000000";
+    };
   </script>
 </body>
 </html>
