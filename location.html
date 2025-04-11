@@ -48,7 +48,7 @@
       background: rgba(0, 0, 0, 0.9);
       padding: 15px 0;
       z-index: 100;
-      border-bottom: 1px solid #FFD700;
+      border-bottom: 2px solid #FFD700;
     }
     .nav a {
       font-family: 'Poiret One', cursive;
@@ -67,7 +67,7 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 80px 20px;
+      padding: 100px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -78,11 +78,11 @@
       font-family: 'Cinzel', serif;
       color: #FFD700;
       font-size: 3em;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-      margin: 0 0 30px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      margin: 0 0 40px;
       letter-spacing: 2px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #FFD700;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 10px;
     }
     .location {
       max-width: 800px;
@@ -91,7 +91,7 @@
       background: rgba(0, 0, 0, 0.8);
       padding: 30px;
       border-radius: 8px;
-      border: 1px solid #FFD700;
+      border: 2px solid #FFD700;
     }
     .location p {
       font-size: 1.2em;
@@ -118,9 +118,31 @@
   </style>
 </head>
 <body>
-  <div class="background-slideshow" id="bg-slideshow"></div>
+  <!-- Background Slideshow -->
+  <div class="background-slideshow" id="bg1"></div>
+  <div class="background-slideshow" id="bg2"></div>
+  <div class="background-slideshow" id="bg3"></div>
+  <div class="background-slideshow" id="bg4"></div>
+  <div class="background-slideshow" id="bg5"></div>
+  <div class="background-slideshow" id="bg6"></div>
+  <div class="background-slideshow" id="bg7"></div>
+  <div class="background-slideshow" id="bg8"></div>
+  <div class="background-slideshow" id="bg9"></div>
+  <div class="background-slideshow" id="bg10"></div>
+  <div class="background-slideshow" id="bg11"></div>
+  <div class="background-slideshow" id="bg12"></div>
+  <div class="background-slideshow" id="bg13"></div>
+  <div class="background-slideshow" id="bg14"></div>
+  <div class="background-slideshow" id="bg15"></div>
+  <div class="background-slideshow" id="bg16"></div>
+  <div class="background-slideshow" id="bg17"></div>
+  <div class="background-slideshow" id="bg18"></div>
+  <div class="background-slideshow" id="bg19"></div>
+  <div class="background-slideshow" id="bg20"></div>
+  <div class="background-slideshow" id="bg21"></div>
   <div class="overlay"></div>
 
+  <!-- Navigation -->
   <div class="nav">
     <a href="index.html" title="Back to home page">Home</a>
     <a href="details.html" title="Event date, time, dress code, and more">Details</a>
@@ -130,6 +152,7 @@
     <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
   </div>
 
+  <!-- Main Content -->
   <div class="content">
     <h1>Location</h1>
     <div class="location">
@@ -139,52 +162,46 @@
   </div>
 
   <script>
+    // Background Slideshow
     const backgrounds = [
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4222.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4223.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4224.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4225.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4226.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4227.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4228.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4229.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4230.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4231.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4232.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4233.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4234.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4235.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4236.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4237.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4238.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4239.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4240.jpg"
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
     ];
     let currentBgIndex = 0;
-    const bgSlideshow = document.getElementById("bg-slideshow");
 
     function changeBackground() {
-      bgSlideshow.classList.remove("active");
-      setTimeout(() => {
-        bgSlideshow.style.backgroundImage = `url(${backgrounds[currentBgIndex]})`;
-        bgSlideshow.classList.add("active");
-        currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-      }, 2000);
+      const bgElements = document.querySelectorAll(".background-slideshow");
+      bgElements.forEach((bg, index) => {
+        bg.classList.remove("active");
+        if (index === currentBgIndex) {
+          bg.style.backgroundImage = `url(${backgrounds[index]})`;
+          bg.classList.add("active");
+        }
+      });
+      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
     }
 
-    const firstImage = new Image();
-    firstImage.src = backgrounds[0];
-    firstImage.onload = () => {
-      bgSlideshow.style.backgroundImage = `url(${backgrounds[0]})`;
-      bgSlideshow.classList.add("active");
-      setInterval(changeBackground, 10000);
-    };
-    firstImage.onerror = () => {
-      console.error("Failed to load first background image:", backgrounds[0]);
-      bgSlideshow.style.background = "#000000";
-    };
+    changeBackground();
+    setInterval(changeBackground, 10000);
   </script>
 </body>
 </html>
