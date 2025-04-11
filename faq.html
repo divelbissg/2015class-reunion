@@ -48,7 +48,7 @@
       background: rgba(0, 0, 0, 0.9);
       padding: 15px 0;
       z-index: 100;
-      border-bottom: 2px solid #FFD700;
+      border-bottom: 1px solid #FFD700;
     }
     .nav a {
       font-family: 'Poiret One', cursive;
@@ -67,7 +67,7 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 100px 20px;
+      padding: 80px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -77,11 +77,11 @@
       font-family: 'Cinzel', serif;
       color: #FFD700;
       font-size: 3em;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-      margin: 0 0 40px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      margin: 0 0 30px;
       letter-spacing: 2px;
-      border-bottom: 2px solid #FFD700;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #FFD700;
     }
     .faq {
       max-width: 800px;
@@ -90,54 +90,13 @@
       background: rgba(0, 0, 0, 0.8);
       padding: 30px;
       border-radius: 8px;
-      border: 2px solid #FFD700;
-    }
-    .faq h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.5em;
-      color: #FFD700;
-      margin: 25px 0 15px;
-      letter-spacing: 1px;
+      border: 1px solid #FFD700;
     }
     .faq p {
-      font-size: 1.1em;
-      color: #E5E5E5;
-      margin: 0 0 20px;
-      line-height: 1.8;
-    }
-    .faq a {
-      color: #FFD700;
-      text-decoration: underline;
-    }
-    .faq a:hover {
-      color: #E5E5E5;
-    }
-    .submit-question {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .submit-question p {
       font-size: 1.2em;
       color: #E5E5E5;
-      margin-bottom: 15px;
-    }
-    .submit-question a {
-      background-color: #FFD700;
-      color: #000000;
-      padding: 10px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      display: inline-block;
-      transition: all 0.3s;
-      border: 2px solid #FFD700;
-    }
-    .submit-question a:hover {
-      background-color: #E5E5E5;
-      color: #000000;
-      box-shadow: 0 0 15px #FFD700;
+      margin: 15px 0;
+      line-height: 1.8;
     }
     @media (max-width: 700px) {
       h1 {
@@ -147,18 +106,8 @@
         margin: 10px;
         padding: 20px;
       }
-      .faq h2 {
-        font-size: 1.2em;
-      }
       .faq p {
         font-size: 1em;
-      }
-      .submit-question p {
-        font-size: 1em;
-      }
-      .submit-question a {
-        padding: 8px 20px;
-        font-size: 14px;
       }
       .nav a {
         font-size: 14px;
@@ -168,11 +117,9 @@
   </style>
 </head>
 <body>
-  <!-- Background Slideshow -->
   <div class="background-slideshow" id="bg-slideshow"></div>
   <div class="overlay"></div>
 
-  <!-- Navigation -->
   <div class="nav">
     <a href="index.html" title="Back to home page">Home</a>
     <a href="details.html" title="Event date, time, dress code, and more">Details</a>
@@ -182,41 +129,16 @@
     <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
   </div>
 
-  <!-- Main Content -->
   <div class="content">
     <h1>Frequently Asked Questions</h1>
     <div class="faq">
-      <h2>What is the date and time of the reunion?</h2>
-      <p>Scheduled for October TBD, 2025, from 5:00 PM to 9:00 PM.</p>
-
-      <h2>Where will the reunion be held?</h2>
-      <p>The location is currently TBD. We’ll update all registered guests as soon as the venue is confirmed.</p>
-
-      <h2>What is the dress code?</h2>
-      <p>The dress code is Black & Gold Semi-Formal. We encourage you to embrace the theme with your attire!</p>
-
-      <h2>How much is the entry fee?</h2>
-      <p>The entry fee is TBD per guest, which includes access to the event, food, and entertainment.</p>
-
-      <h2>Can I bring a guest?</h2>
-      <p>Yes, you may bring one guest. Please note this is a 21+ event, and children are not permitted.</p>
-
-      <h2>How do I RSVP for the reunion?</h2>
-      <p>You can RSVP by clicking the “RSVP” link in the navigation bar or directly via <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank">this link</a>.</p>
-
-      <h2>Who can I contact for more information?</h2>
-      <p>For any questions or additional information, please submit your question using the link below or email <a href="mailto:ajhs2015reunion@gmail.com">ajhs2015reunion@gmail.com</a>.</p>
-
-      <!-- New Section for Submitting Questions -->
-      <div class="submit-question">
-        <p>Have a question that’s not answered here?</p>
-        <a href="https://forms.gle/T1dvAPHCWske6D5PA" target="_blank">Submit Your Question</a>
-      </div>
+      <p><strong>Q: When is the reunion?</strong><br>A: The date is TBD. Check the Details page for updates.</p>
+      <p><strong>Q: Where will it be held?</strong><br>A: The location is TBD. See the Location page for more info.</p>
+      <p><strong>Q: How do I RSVP?</strong><br>A: Click the RSVP link in the navigation to register.</p>
     </div>
   </div>
 
   <script>
-    // Background Slideshow
     const backgrounds = [
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
@@ -244,18 +166,14 @@
     const bgSlideshow = document.getElementById("bg-slideshow");
 
     function changeBackground() {
-      // Fade out current image
       bgSlideshow.classList.remove("active");
-      
-      // Wait for fade-out transition to complete
       setTimeout(() => {
         bgSlideshow.style.backgroundImage = `url(${backgrounds[currentBgIndex]})`;
         bgSlideshow.classList.add("active");
         currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-      }, 2000); // Match transition duration
+      }, 2000);
     }
 
-    // Preload first image and start slideshow
     const firstImage = new Image();
     firstImage.src = backgrounds[0];
     firstImage.onload = () => {
@@ -265,7 +183,6 @@
     };
     firstImage.onerror = () => {
       console.error("Failed to load first background image:", backgrounds[0]);
-      // Fallback: Set a solid background
       bgSlideshow.style.background = "#000000";
     };
   </script>
