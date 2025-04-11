@@ -233,11 +233,9 @@
   </style>
 </head>
 <body>
-  <!-- Background Slideshow -->
   <div class="background-slideshow" id="bg-slideshow"></div>
   <div class="overlay"></div>
 
-  <!-- Navigation -->
   <div class="nav">
     <a href="index.html" title="Back to home page">Home</a>
     <a href="details.html" title="Event date, time, dress code, and more">Details</a>
@@ -247,7 +245,6 @@
     <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
   </div>
 
-  <!-- Main Content -->
   <div class="content">
     <h1>Photo Gallery</h1>
     <div class="gallery-container">
@@ -261,7 +258,6 @@
       </div>
     </div>
 
-    <!-- Slideshow -->
     <div class="slideshow" id="slideshow">
       <img id="slideshow-image" src="" alt="Slideshow Image">
       <button class="close-btn" id="close-slideshow">Close</button>
@@ -271,7 +267,7 @@
   </div>
 
   <script>
-    // Background Slideshow (unchanged)
+    // Background Slideshow
     const backgrounds = [
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
@@ -307,14 +303,14 @@
       }, 2000);
     }
 
-    const firstBgImage = new Image();
-    firstBgImage.src = backgrounds[0];
-    firstBgImage.onload = () => {
+    const firstImage = new Image();
+    firstImage.src = backgrounds[0];
+    firstImage.onload = () => {
       bgSlideshow.style.backgroundImage = `url(${backgrounds[0]})`;
       bgSlideshow.classList.add("active");
       setInterval(changeBackground, 10000);
     };
-    firstBgImage.onerror = () => {
+    firstImage.onerror = () => {
       console.error("Failed to load first background image:", backgrounds[0]);
       bgSlideshow.style.background = "#000000";
     };
@@ -394,33 +390,30 @@
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4213.jpg"
     ];
 
-    // Populate thumbnail gallery with error handling
     const thumbnailGallery = document.getElementById("thumbnail-gallery");
-    const validImages = []; // Track images that load successfully
+    const validImages = [];
 
     images.forEach((src, index) => {
       const img = document.createElement("img");
       img.src = src;
       img.alt = `Reunion Photo ${index + 1}`;
-      img.dataset.index = validImages.length; // Index based on valid images
+      img.dataset.index = validImages.length;
 
-      // Check if image loads
       img.onload = () => {
         validImages.push(src);
         thumbnailGallery.appendChild(img);
-        if (validImages.length === 1) updateMainImage(0); // Set first valid image
+        if (validImages.length === 1) updateMainImage(0);
       };
       img.onerror = () => {
         console.error(`Failed to load gallery image: ${src}`);
       };
     });
 
-    // Initialize main image
     const mainImage = document.getElementById("main-image");
     let currentIndex = 0;
 
     function updateMainImage(index) {
-      if (validImages.length === 0) return; // No valid images
+      if (validImages.length === 0) return;
       mainImage.src = validImages[index];
       const thumbnailImages = document.querySelectorAll(".thumbnail-gallery img");
       thumbnailImages.forEach(img => img.classList.remove("active"));
@@ -428,7 +421,6 @@
       thumbnailImages[index].scrollIntoView({ behavior: "smooth", inline: "center" });
     }
 
-    // Thumbnail click handler
     thumbnailGallery.addEventListener("click", (e) => {
       const img = e.target.closest("img");
       if (img) {
@@ -437,14 +429,12 @@
       }
     });
 
-    // Main image click to open slideshow
     mainImage.addEventListener("click", () => {
       if (validImages.length === 0) return;
       slideshowImage.src = mainImage.src;
       slideshow.style.display = "flex";
     });
 
-    // Slideshow controls
     const slideshow = document.getElementById("slideshow");
     const slideshowImage = document.getElementById("slideshow-image");
     const closeBtn = document.getElementById("close-slideshow");
