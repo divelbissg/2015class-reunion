@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Class of 2015 Reunion</title>
+  <title>Home - Class of 2015 Reunion</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Raleway:wght@400;700&family=Poiret+One&display=swap" rel="stylesheet">
   <style>
     body {
@@ -48,7 +48,7 @@
       background: rgba(0, 0, 0, 0.9);
       padding: 15px 0;
       z-index: 100;
-      border-bottom: 2px solid #FFD700;
+      border-bottom: 1px solid #FFD700;
     }
     .nav a {
       font-family: 'Poiret One', cursive;
@@ -67,59 +67,35 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 100px 20px;
+      padding: 80px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
     h1 {
       font-family: 'Cinzel', serif;
       color: #FFD700;
-      font-size: 4em;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      font-size: 3em;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
       margin: 0 0 30px;
       letter-spacing: 2px;
-      border-bottom: 0px solid #FFD700;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #FFD700;
     }
-    .countdown {
-      font-size: 1.8em;
-      margin: 30px 0;
+    p {
+      font-size: 1.2em;
       color: #E5E5E5;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-    .rsvp-button {
-      background-color: #FFD700;
-      color: #000000;
-      padding: 10px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      display: inline-block;
-      margin: 15px;
-      transition: all 0.3s;
-      border: 2px solid #FFD700;
-    }
-    .rsvp-button:hover {
-      background-color: #E5E5E5;
-      color: #000000;
-      box-shadow: 0 0 15px #FFD700;
+      max-width: 800px;
+      line-height: 1.8;
     }
     @media (max-width: 700px) {
       h1 {
-        font-size: 2.5em;
+        font-size: 2em;
       }
-      .countdown {
-        font-size: 1.3em;
-      }
-      .rsvp-button {
-        padding: 8px 20px;
-        font-size: 14px;
+      p {
+        font-size: 1em;
       }
       .nav a {
         font-size: 14px;
@@ -129,12 +105,11 @@
   </style>
 </head>
 <body>
-  <!-- Background Slideshow -->
   <div class="background-slideshow" id="bg-slideshow"></div>
   <div class="overlay"></div>
 
-  <!-- Navigation -->
   <div class="nav">
+    <a href="index.html" title="Back to home page">Home</a>
     <a href="details.html" title="Event date, time, dress code, and more">Details</a>
     <a href="location.html" title="Location details (TBD)">Location</a>
     <a href="gallery.html" title="View photos from our high school days">Gallery</a>
@@ -142,16 +117,12 @@
     <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
   </div>
 
-  <!-- Main Content -->
   <div class="content">
-    <h1>Apache Junction High School</h1>
-    <h1>Class of 2015 - 10 Year Reunion</h1>
-    <div class="countdown" id="countdown"></div>
-    <a class="rsvp-button" href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank">RSVP Now</a>
+    <h1>Welcome, Class of 2015!</h1>
+    <p>Join us for the Apache Junction High School Class of 2015 10-Year Reunion. Reconnect with old friends, share memories, and celebrate a decade since graduation. Details to follow—RSVP to stay updated!</p>
   </div>
 
   <script>
-    // Background Slideshow
     const backgrounds = [
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4220.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/IMG_4221.jpg",
@@ -179,18 +150,14 @@
     const bgSlideshow = document.getElementById("bg-slideshow");
 
     function changeBackground() {
-      // Fade out current image
       bgSlideshow.classList.remove("active");
-      
-      // Wait for fade-out transition to complete
       setTimeout(() => {
         bgSlideshow.style.backgroundImage = `url(${backgrounds[currentBgIndex]})`;
         bgSlideshow.classList.add("active");
         currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-      }, 2000); // Match transition duration
+      }, 2000);
     }
 
-    // Preload first image and start slideshow
     const firstImage = new Image();
     firstImage.src = backgrounds[0];
     firstImage.onload = () => {
@@ -200,32 +167,8 @@
     };
     firstImage.onerror = () => {
       console.error("Failed to load first background image:", backgrounds[0]);
-      // Fallback: Set a solid background or alternative image
       bgSlideshow.style.background = "#000000";
     };
-
-    // Countdown timer
-    const reunionDate = new Date("October 11, 2025 17:00:00").getTime();
-    const countdownElement = document.getElementById("countdown");
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const timeLeft = reunionDate - now;
-
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-      if (timeLeft < 0) {
-        countdownElement.innerHTML = "The reunion is here!";
-      }
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
   </script>
 </body>
 </html>
