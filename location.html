@@ -24,7 +24,8 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
       transition: opacity 2s ease-in-out;
@@ -156,7 +157,7 @@
   <div class="content">
     <h1>Location</h1>
     <div class="location">
-      <p>The location for the Apache Junction High School Class of 2015 10-Year Reunion is currently TBD.</p>
+      <p>The location for the AJHS Class of 2015 10-Year Reunion is currently TBD.</p>
       <p>We will update all registered guests as soon as the venue is confirmed. Stay tuned!</p>
     </div>
   </div>
@@ -186,18 +187,44 @@
       "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
       "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
     ];
+
+    // Fisher-Yates shuffle to randomize array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Shuffle backgrounds initially
+    let shuffledBackgrounds = [...backgrounds];
+    shuffleArray(shuffledBackgrounds);
+
     let currentBgIndex = 0;
+    let usedIndices = [];
 
     function changeBackground() {
       const bgElements = document.querySelectorAll(".background-slideshow");
-      bgElements.forEach((bg, index) => {
-        bg.classList.remove("active");
-        if (index === currentBgIndex) {
-          bg.style.backgroundImage = `url(${backgrounds[index]})`;
-          bg.classList.add("active");
-        }
-      });
-      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+      bgElements.forEach(bg => bg.classList.remove("active"));
+
+      if (usedIndices.length >= shuffledBackgrounds.length) {
+        usedIndices = [];
+        shuffleArray(shuffledBackgrounds);
+      }
+
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
+      } while (usedIndices.includes(nextIndex));
+
+      usedIndices.push(nextIndex);
+
+      const currentBg = bgElements[currentBgIndex];
+      currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
+      currentBg.classList.add("active");
+
+      currentBgIndex = (currentBgIndex + 1) % bgElements.length;
     }
 
     changeBackground();
