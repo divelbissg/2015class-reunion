@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -95,8 +95,8 @@
     .main-preview img {
       width: 100%;
       height: 450px;
-      object-fit: contain; /* Changed to contain to prevent cropping */
-      background: #000; /* Black background for padding */
+      object-fit: contain;
+      background: #000;
       border: 0.5px solid #FFD700;
       border-radius: 8px;
       display: block;
@@ -133,10 +133,10 @@
       width: 100%;
     }
     .gallery img {
-      width: 150px;
-      height: 100px;
-      object-fit: contain; /* Changed to contain to prevent cropping */
-      background: #000; /* Black background for padding */
+      width: 200px; /* Increased for better visibility */
+      height: 150px; /* Adjusted to maintain aspect ratio */
+      object-fit: contain;
+      background: #000;
       margin: 0 10px;
       border: 2px solid #FFD700;
       border-radius: 5px;
@@ -188,7 +188,7 @@
       max-height: 80%;
       border: 2px solid #FFD700;
       border-radius: 8px;
-      object-fit: contain; /* Ensure full image visibility */
+      object-fit: contain;
       background: #000;
     }
     .lightbox-nav {
@@ -210,16 +210,24 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 40px; /* Increased for visibility */
+      font-size: 50px; /* Increased for visibility */
       color: #FFD700;
+      background: rgba(0, 0, 0, 0.8); /* Added background for contrast */
+      border: 2px solid #FFD700; /* Added border for definition */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       user-select: none;
-      z-index: 201; /* Ensure above image */
-      padding: 10px;
-      transition: color 0.3s;
+      z-index: 201;
+      transition: color 0.3s, background 0.3s;
     }
     .lightbox-close:hover {
-      color: #E5E5E5;
+      color: #FFFFFF;
+      background: #FFD700;
     }
     @media (max-width: 700px) {
       h1 {
@@ -235,8 +243,8 @@
         width: 100%;
       }
       .gallery img {
-        width: 100px;
-        height: 60px;
+        width: 120px; /* Adjusted for mobile */
+        height: 90px;
       }
       .disclaimer {
         font-size: 12px;
@@ -260,7 +268,9 @@
         right: 10px;
       }
       .lightbox-close {
-        font-size: 30px;
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
         top: 15px;
         right: 15px;
       }
@@ -409,7 +419,7 @@
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4234.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4235.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4236.jpg",
-      "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4237.jpg",
+      "https://github.com/divelb organise/main/images/IMG_4237.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4238.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4239.jpg",
       "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4240.jpg"
