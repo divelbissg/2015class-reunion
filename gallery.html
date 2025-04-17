@@ -67,7 +67,7 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 100px 20px 180px; /* Increased bottom padding for slider */
+      padding: 100px 20px 180px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -88,14 +88,15 @@
     }
     .main-preview {
       width: 100%;
-      max-width: 800px; /* Uniform max width */
+      max-width: 800px;
       margin: 0 auto 20px;
       cursor: pointer;
     }
     .main-preview img {
       width: 100%;
-      height: 450px; /* Fixed height for uniformity */
-      object-fit: cover; /* Ensure images fill space uniformly */
+      height: 450px;
+      object-fit: contain; /* Changed to contain to prevent cropping */
+      background: #000; /* Black background for padding */
       border: 0.5px solid #FFD700;
       border-radius: 8px;
       display: block;
@@ -111,7 +112,7 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: #FFD700 #000000;
-      z-index: 10; /* Ensure visibility over content */
+      z-index: 10;
       background: rgba(0, 0, 0, 0.8);
       border-top: 2px solid #FFD700;
     }
@@ -132,9 +133,10 @@
       width: 100%;
     }
     .gallery img {
-      width: 150px; /* Fixed width for uniformity */
-      height: 100px; /* Fixed height for uniformity */
-      object-fit: cover; /* Ensure images fill space uniformly */
+      width: 150px;
+      height: 100px;
+      object-fit: contain; /* Changed to contain to prevent cropping */
+      background: #000; /* Black background for padding */
       margin: 0 10px;
       border: 2px solid #FFD700;
       border-radius: 5px;
@@ -186,6 +188,8 @@
       max-height: 80%;
       border: 2px solid #FFD700;
       border-radius: 8px;
+      object-fit: contain; /* Ensure full image visibility */
+      background: #000;
     }
     .lightbox-nav {
       position: absolute;
@@ -206,10 +210,16 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 30px;
+      font-size: 40px; /* Increased for visibility */
       color: #FFD700;
       cursor: pointer;
       user-select: none;
+      z-index: 201; /* Ensure above image */
+      padding: 10px;
+      transition: color 0.3s;
+    }
+    .lightbox-close:hover {
+      color: #E5E5E5;
     }
     @media (max-width: 700px) {
       h1 {
@@ -219,7 +229,7 @@
         width: 90%;
       }
       .main-preview img {
-        height: 300px; /* Adjusted for mobile */
+        height: 300px;
       }
       .gallery-container {
         width: 100%;
@@ -227,7 +237,6 @@
       .gallery img {
         width: 100px;
         height: 60px;
-        margin: 0 5px;
       }
       .disclaimer {
         font-size: 12px;
@@ -249,6 +258,11 @@
       }
       .lightbox-nav.next {
         right: 10px;
+      }
+      .lightbox-close {
+        font-size: 30px;
+        top: 15px;
+        right: 15px;
       }
     }
   </style>
@@ -364,10 +378,10 @@
     </div>
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <span class="lightbox-close" id="lightbox-close">×</span>
       <img id="lightbox-image" src="" alt="">
-      <span class="lightbox-nav prev" id="lightbox-prev">&#10094;</span>
-      <span class="lightbox-nav next" id="lightbox-next">&#10095;</span>
+      <span class="lightbox-nav prev" id="lightbox-prev">❮</span>
+      <span class="lightbox-nav next" id="lightbox-next">❯</span>
     </div>
     <!-- Disclaimer -->
     <div class="disclaimer">
@@ -506,6 +520,13 @@
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxPrev.addEventListener('click', showPrevImage);
     lightboxNext.addEventListener('click', showNextImage);
+
+    // Click anywhere on lightbox background to close
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
