@@ -30,7 +30,7 @@
       transition: opacity 2s ease-in-out;
     }
     .background-slideshow.active {
-      opacity: 3;
+      opacity: 0.7;
     }
     .overlay {
       position: fixed;
@@ -38,7 +38,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.6);
       z-index: 0;
     }
     .nav {
@@ -46,28 +46,40 @@
       top: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.9);
-      padding: 15px 0;
+      padding: 10px 0;
       z-index: 100;
       border-bottom: 2px solid #FFD700;
+    }
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .nav a {
       font-family: 'Poiret One', cursive;
       color: #FFD700;
       text-decoration: none;
-      margin: 0 25px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       transition: color 0.3s;
+      padding: 10px;
     }
     .nav a:hover {
       color: #E5E5E5;
     }
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: #FFD700;
+      cursor: pointer;
+      padding: 10px;
+    }
     .content {
       position: relative;
       z-index: 1;
-      padding: 100px 20px;
+      padding: 80px 15px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -77,26 +89,26 @@
     h1 {
       font-family: 'Cinzel', serif;
       color: #FFD700;
-      margin: 0 0 30px;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      margin: 0 0 20px;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
       border-bottom: 2px solid #FFD700;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     h1 span:first-child {
-      font-size: 3em;
+      font-size: 2.2em;
       line-height: 1.2;
     }
     h1 span:last-child {
-      font-size: 2em;
+      font-size: 1.6em;
       line-height: 1.2;
     }
     .countdown {
-      font-size: 1.8em;
-      margin: 30px 0;
+      font-size: 1.4em;
+      margin: 20px 0;
       color: #E5E5E5;
       font-weight: 500;
       letter-spacing: 1px;
@@ -104,39 +116,57 @@
     .rsvp-button {
       background-color: #FFD700;
       color: #000000;
-      padding: 10px 25px;
+      padding: 10px 20px;
       text-decoration: none;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       text-transform: uppercase;
       display: inline-block;
-      margin: 15px;
+      margin: 10px;
       transition: all 0.3s;
       border: 2px solid #FFD700;
     }
     .rsvp-button:hover {
       background-color: #E5E5E5;
       color: #000000;
-      box-shadow: 0 0 15px #FFD700;
+      box-shadow: 0 0 10px #FFD700;
     }
     @media (max-width: 700px) {
       h1 span:first-child {
-        font-size: 2em;
+        font-size: 1.8em;
       }
       h1 span:last-child {
-        font-size: 1.5em;
+        font-size: 1.2em;
       }
       .countdown {
-        font-size: 1.3em;
+        font-size: 1.1em;
       }
       .rsvp-button {
-        padding: 8px 20px;
-        font-size: 14px;
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      .hamburger {
+        display: block;
+      }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+      }
+      .nav-menu.active {
+        display: flex;
       }
       .nav a {
         font-size: 14px;
-        margin: 0 15px;
+        margin: 5px 0;
+      }
+      .content {
+        padding: 70px 10px;
       }
     }
   </style>
@@ -147,30 +177,17 @@
   <div class="background-slideshow" id="bg3"></div>
   <div class="background-slideshow" id="bg4"></div>
   <div class="background-slideshow" id="bg5"></div>
-  <div class="background-slideshow" id="bg6"></div>
-  <div class="background-slideshow" id="bg7"></div>
-  <div class="background-slideshow" id="bg8"></div>
-  <div class="background-slideshow" id="bg9"></div>
-  <div class="background-slideshow" id="bg10"></div>
-  <div class="background-slideshow" id="bg11"></div>
-  <div class="background-slideshow" id="bg12"></div>
-  <div class="background-slideshow" id="bg13"></div>
-  <div class="background-slideshow" id="bg14"></div>
-  <div class="background-slideshow" id="bg15"></div>
-  <div class="background-slideshow" id="bg16"></div>
-  <div class="background-slideshow" id="bg17"></div>
-  <div class="background-slideshow" id="bg18"></div>
-  <div class="background-slideshow" id="bg19"></div>
-  <div class="background-slideshow" id="bg20"></div>
-  <div class="background-slideshow" id="bg21"></div>
   <div class="overlay"></div>
 
   <div class="nav">
-    <a href="details.html" title="Event date, time, dress code, and more">Details</a>
-    <a href="location.html" title="Location details (TBD)">Location</a>
-    <a href="gallery.html" title="View photos from our high school days">Gallery</a>
-    <a href="faq.html" title="Frequently asked questions about the reunion">FAQ</a>
-    <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="nav-menu" id="navMenu">
+      <a href="details.html" title="Event date, time, dress code, and more">Details</a>
+      <a href="location.html" title="Location details (TBD)">Location</a>
+      <a href="gallery.html" title="View photos from our high school days">Gallery</a>
+      <a href="faq.html" title="Frequently asked questions about the reunion">FAQ</a>
+      <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
+    </div>
   </div>
 
   <div class="content">
@@ -183,79 +200,60 @@
   </div>
 
   <script>
-// Background Slideshow
-const backgrounds = [
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
-];
+    // Background Slideshow
+    const backgrounds = [
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true"
+    ];
 
-// Fisher-Yates shuffle to randomize array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
+    // Fisher-Yates shuffle
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
 
-// Shuffle backgrounds initially
-let shuffledBackgrounds = [...backgrounds];
-shuffleArray(shuffledBackgrounds);
-
-let currentBgIndex = 0;
-let usedIndices = []; // Track used indices to avoid immediate repeats
-
-function changeBackground() {
-  const bgElements = document.querySelectorAll(".background-slideshow");
-  bgElements.forEach(bg => bg.classList.remove("active"));
-
-  // If all images have been used, reset and reshuffle
-  if (usedIndices.length >= shuffledBackgrounds.length) {
-    usedIndices = [];
+    let shuffledBackgrounds = [...backgrounds];
     shuffleArray(shuffledBackgrounds);
-  }
+    let currentBgIndex = 0;
+    let usedIndices = [];
 
-  // Select a random index that hasn't been used yet
-  let nextIndex;
-  do {
-    nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
-  } while (usedIndices.includes(nextIndex));
+    function changeBackground() {
+      const bgElements = document.querySelectorAll(".background-slideshow");
+      bgElements.forEach(bg => bg.classList.remove("active"));
 
-  usedIndices.push(nextIndex);
+      if (usedIndices.length >= shuffledBackgrounds.length) {
+        usedIndices = [];
+        shuffleArray(shuffledBackgrounds);
+      }
 
-  // Apply the new background to the current div
-  const currentBg = bgElements[currentBgIndex];
-  currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
-  currentBg.classList.add("active");
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
+      } while (usedIndices.includes(nextIndex));
 
-  // Move to the next div for the next transition
-  currentBgIndex = (currentBgIndex + 1) % bgElements.length;
-}
+      usedIndices.push(nextIndex);
 
-// Initialize the first background
-changeBackground();
+      const currentBg = bgElements[currentBgIndex];
+      currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
+      currentBg.classList.add("active");
 
-// Change background every 10 seconds
-setInterval(changeBackground, 10000);
-</script>
+      currentBgIndex = (currentBgIndex + 1) % bgElements.length;
+    }
+
+    changeBackground();
+    setInterval(changeBackground, 10000);
+
+    // Hamburger Menu Toggle
+    function toggleMenu() {
+      const navMenu = document.getElementById("navMenu");
+      navMenu.classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
