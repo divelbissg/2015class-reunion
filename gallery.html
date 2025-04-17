@@ -67,7 +67,7 @@
     .content {
       position: relative;
       z-index: 1;
-      padding: 100px 20px;
+      padding: 100px 20px 180px; /* Increased bottom padding for slider */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -87,25 +87,33 @@
       max-width: 1200px;
     }
     .main-preview {
-      width: 60%;
-      max-width: 1200px;
+      width: 100%;
+      max-width: 800px; /* Uniform max width */
       margin: 0 auto 20px;
+      cursor: pointer;
     }
     .main-preview img {
       width: 100%;
-      height: auto;
+      height: 450px; /* Fixed height for uniformity */
+      object-fit: cover; /* Ensure images fill space uniformly */
       border: 0.5px solid #FFD700;
       border-radius: 8px;
       display: block;
     }
     .gallery-container {
-      width: 100%; /* Full width to be flush with the page */
-      margin: 0; /* Remove margins to align with page edges */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
       overflow-x: auto;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: #FFD700 #000000;
+      z-index: 10; /* Ensure visibility over content */
+      background: rgba(0, 0, 0, 0.8);
+      border-top: 2px solid #FFD700;
     }
     .gallery-container::-webkit-scrollbar {
       height: 8px;
@@ -120,14 +128,13 @@
     .gallery {
       display: flex;
       white-space: nowrap;
-      padding: 20px 10px; /* Adjusted padding for better edge alignment */
-      background: rgba(0, 0, 0, 0.8);
-      border-top: 2px solid #FFD700;
-      border-bottom: 2px solid #FFD700;
-      width: 100%; /* Ensure gallery spans full container */
+      padding: 10px;
+      width: 100%;
     }
     .gallery img {
-      height: 100px;
+      width: 150px; /* Fixed width for uniformity */
+      height: 100px; /* Fixed height for uniformity */
+      object-fit: cover; /* Ensure images fill space uniformly */
       margin: 0 10px;
       border: 2px solid #FFD700;
       border-radius: 5px;
@@ -149,7 +156,7 @@
       max-width: 1200px;
       text-align: left;
       line-height: 1.5;
-      opacity: 0.6; /* Lower opacity for subtlety */
+      opacity: 0.6;
     }
     .disclaimer a {
       color: #FFD700;
@@ -158,6 +165,52 @@
     .disclaimer a:hover {
       color: #E5E5E5;
     }
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: #FFD700;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lightbox-nav.prev {
+      left: 20px;
+    }
+    .lightbox-nav.next {
+      right: 20px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      color: #FFD700;
+      cursor: pointer;
+      user-select: none;
+    }
     @media (max-width: 700px) {
       h1 {
         font-size: 2em;
@@ -165,25 +218,37 @@
       .main-preview {
         width: 90%;
       }
-      .gallery-container {
-        width: 100%; /* Ensure full width on mobile */
-        margin: 0;
+      .main-preview img {
+        height: 300px; /* Adjusted for mobile */
       }
-      .gallery {
-        padding: 20px 5px; /* Adjust padding for mobile */
+      .gallery-container {
+        width: 100%;
       }
       .gallery img {
+        width: 100px;
         height: 60px;
         margin: 0 5px;
       }
       .disclaimer {
         font-size: 12px;
         padding: 0 10px;
-        opacity: 0.6; /* Maintain lower opacity */
       }
       .nav a {
         font-size: 14px;
         margin: 0 15px;
+      }
+      .lightbox img {
+        max-width: 95%;
+        max-height: 70%;
+      }
+      .lightbox-nav {
+        font-size: 30px;
+      }
+      .lightbox-nav.prev {
+        left: 10px;
+      }
+      .lightbox-nav.next {
+        right: 10px;
       }
     }
   </style>
@@ -226,72 +291,83 @@
   <!-- Main Content -->
   <div class="content">
     <h1>Photo Gallery</h1>
+    <!-- Main Preview -->
+    <div class="main-preview">
+      <img id="main-image" src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015i.jpg" alt="Reunion Photo 1">
+    </div>
     <!-- Photo Slider -->
     <div class="gallery-container">
       <div class="gallery" id="gallery">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015i.jpg"alt="Reunion Photo 1">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4244.jpg"alt="Reunion Photo 2">
-            <img src= "https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4182.jpg"alt="Reunion Photo 3">
-             <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015g.jpg?raw=true"alt="Reunion Photo 4">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4215.jpg"alt="Reunion Photo 5">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4193.jpg"alt="Reunion Photo 6">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015C.jpg"alt="Reunion Photo 7">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4249.jpg"alt="Reunion Photo 8">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4178.jpg"alt="Reunion Photo 9">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015k.jpg"alt="Reunion Photo 10">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4201.jpg"alt="Reunion Photo 11">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4252.jpg"alt="Reunion Photo 12">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015D.jpg"alt="Reunion Photo 13">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4187.jpg"alt="Reunion Photo 14">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4221.jpg"alt="Reunion Photo 15">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015B.jpg"alt="Reunion Photo 16">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4199.jpg"alt="Reunion Photo 17">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4241.jpg"alt="Reunion Photo 18">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4174.jpg"alt="Reunion Photo 19">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015A.jpg"alt="Reunion Photo 20">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4209.jpg"alt="Reunion Photo 21">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4180.jpg"alt="Reunion Photo 22">
-             <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015j.jpg?raw=true"alt="Reunion Photo 23">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4218.jpg"alt="Reunion Photo 24">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4250.jpg"alt="Reunion Photo 25">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4196.jpg"alt="Reunion Photo 26">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015e.jpg"alt="Reunion Photo 27">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4246.jpg"alt="Reunion Photo 28">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4176.jpg"alt="Reunion Photo 29">
-             <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015f.jpg?raw=true"alt="Reunion Photo 31">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4212.jpg"alt="Reunion Photo 33">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4191.jpg"alt="Reunion Photo 34">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4243.jpg"alt="Reunion Photo 35">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015h.jpg"alt="Reunion Photo 37">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4208.jpg"alt="Reunion Photo 38">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4189.jpg"alt="Reunion Photo 40">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4217.jpg"alt="Reunion Photo 41">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4195.jpg"alt="Reunion Photo 42">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4248.jpg"alt="Reunion Photo 43">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4175.jpg"alt="Reunion Photo 44">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4202.jpg"alt="Reunion Photo 45">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4183.jpg"alt="Reunion Photo 46">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4198.jpg"alt="Reunion Photo 48">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4245.jpg"alt="Reunion Photo 49">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4177.jpg"alt="Reunion Photo 50">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4205.jpg"alt="Reunion Photo 51">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4186.jpg"alt="Reunion Photo 52">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4214.jpg"alt="Reunion Photo 53">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4192.jpg"alt="Reunion Photo 54">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4251.jpg"alt="Reunion Photo 55">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4219.jpg"alt="Reunion Photo 57">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4197.jpg"alt="Reunion Photo 58">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4247.jpg"alt="Reunion Photo 59">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4200.jpg"alt="Reunion Photo 60">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4188.jpg"alt="Reunion Photo 61">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4216.jpg"alt="Reunion Photo 62">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4194.jpg"alt="Reunion Photo 63">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4253.jpg"alt="Reunion Photo 64">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4184.jpg"alt="Reunion Photo 65">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4190.jpg"alt="Reunion Photo 66">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4242.jpg"alt="Reunion Photo 67">
-             <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4213.jpg"alt="Reunion Photo 69">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015i.jpg" alt="Reunion Photo 1" class="active">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4244.jpg" alt="Reunion Photo 2">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4182.jpg" alt="Reunion Photo 3">
+        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015g.jpg?raw=true" alt="Reunion Photo 4">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4215.jpg" alt="Reunion Photo 5">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4193.jpg" alt="Reunion Photo 6">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015C.jpg" alt="Reunion Photo 7">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4249.jpg" alt="Reunion Photo 8">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4178.jpg" alt="Reunion Photo 9">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015k.jpg" alt="Reunion Photo 10">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4201.jpg" alt="Reunion Photo 11">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4252.jpg" alt="Reunion Photo 12">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classsof2015D.jpg" alt="Reunion Photo 13">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4187.jpg" alt="Reunion Photo 14">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4221.jpg" alt="Reunion Photo 15">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015B.jpg" alt="Reunion Photo 16">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4199.jpg" alt="Reunion Photo 17">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4241.jpg" alt="Reunion Photo 18">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4174.jpg" alt="Reunion Photo 19">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015A.jpg" alt="Reunion Photo 20">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4209.jpg" alt="Reunion Photo 21">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4180.jpg" alt="Reunion Photo 22">
+        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015j.jpg?raw=true" alt="Reunion Photo 23">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4218.jpg" alt="Reunion Photo 24">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4250.jpg" alt="Reunion Photo 25">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4196.jpg" alt="Reunion Photo 26">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015e.jpg" alt="Reunion Photo 27">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4246.jpg" alt="Reunion Photo 28">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4176.jpg" alt="Reunion Photo 29">
+        <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/classof2015f.jpg?raw=true" alt="Reunion Photo 31">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4212.jpg" alt="Reunion Photo 33">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4191.jpg" alt="Reunion Photo 34">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4243.jpg" alt="Reunion Photo 35">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/classof2015h.jpg" alt="Reunion Photo 37">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4208.jpg" alt="Reunion Photo 38">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4189.jpg" alt="Reunion Photo 40">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4217.jpg" alt="Reunion Photo 41">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4195.jpg" alt="Reunion Photo 42">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4248.jpg" alt="Reunion Photo 43">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4175.jpg" alt="Reunion Photo 44">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4202.jpg" alt="Reunion Photo 45">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4183.jpg" alt="Reunion Photo 46">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4198.jpg" alt="Reunion Photo 48">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4245.jpg" alt="Reunion Photo 49">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4177.jpg" alt="Reunion Photo 50">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4205.jpg" alt="Reunion Photo 51">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4186.jpg" alt="Reunion Photo 52">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4214.jpg" alt="Reunion Photo 53">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4192.jpg" alt="Reunion Photo 54">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4251.jpg" alt="Reunion Photo 55">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4219.jpg" alt="Reunion Photo 57">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4197.jpg" alt="Reunion Photo 58">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4247.jpg" alt="Reunion Photo 59">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4200.jpg" alt="Reunion Photo 60">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4188.jpg" alt="Reunion Photo 61">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4216.jpg" alt="Reunion Photo 62">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4194.jpg" alt="Reunion Photo 63">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4253.jpg" alt="Reunion Photo 64">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4184.jpg" alt="Reunion Photo 65">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4190.jpg" alt="Reunion Photo 66">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4242.jpg" alt="Reunion Photo 67">
+        <img src="https://github.com/divelbissg/2015class-reunion/raw/main/images/IMG_4213.jpg" alt="Reunion Photo 69">
       </div>
+    </div>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <img id="lightbox-image" src="" alt="">
+      <span class="lightbox-nav prev" id="lightbox-prev">&#10094;</span>
+      <span class="lightbox-nav next" id="lightbox-next">&#10095;</span>
     </div>
     <!-- Disclaimer -->
     <div class="disclaimer">
@@ -365,21 +441,83 @@
     changeBackground();
     setInterval(changeBackground, 10000);
 
-    // Photo Slider Functionality
+    // Photo Slider and Lightbox Functionality
     const mainImage = document.getElementById('main-image');
     const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    let currentImageIndex = 0;
 
-    galleryImages.forEach(img => {
+    function updateMainImage(index) {
+      galleryImages.forEach(img => img.classList.remove('active'));
+      galleryImages[index].classList.add('active');
+      mainImage.src = galleryImages[index].src;
+      mainImage.alt = galleryImages[index].alt;
+      currentImageIndex = index;
+
+      // Scroll to center the active thumbnail
+      const activeImg = galleryImages[index];
+      const galleryContainer = document.querySelector('.gallery-container');
+      const imgOffset = activeImg.offsetLeft + (activeImg.offsetWidth / 2) - (galleryContainer.offsetWidth / 2);
+      galleryContainer.scrollTo({ left: imgOffset, behavior: 'smooth' });
+    }
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      lightboxImage.src = galleryImages[index].src;
+      lightboxImage.alt = galleryImages[index].alt;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    function showPrevImage() {
+      currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+      lightboxImage.src = galleryImages[currentImageIndex].src;
+      lightboxImage.alt = galleryImages[currentImageIndex].alt;
+      updateMainImage(currentImageIndex);
+    }
+
+    function showNextImage() {
+      currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+      lightboxImage.src = galleryImages[currentImageIndex].src;
+      lightboxImage.alt = galleryImages[currentImageIndex].alt;
+      updateMainImage(currentImageIndex);
+    }
+
+    // Gallery thumbnail click
+    galleryImages.forEach((img, index) => {
       img.addEventListener('click', () => {
-        // Remove active class from all images
-        galleryImages.forEach(i => i.classList.remove('active'));
-        // Add active class to clicked image
-        img.classList.add('active');
-        // Update main preview
-        mainImage.src = img.src;
-        mainImage.alt = img.alt;
+        updateMainImage(index);
       });
     });
+
+    // Main image click to open lightbox
+    mainImage.addEventListener('click', () => {
+      openLightbox(currentImageIndex);
+    });
+
+    // Lightbox navigation
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrevImage);
+    lightboxNext.addEventListener('click', showNextImage);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') showPrevImage();
+        if (e.key === 'ArrowRight') showNextImage();
+        if (e.key === 'Escape') closeLightbox();
+      }
+    });
+
+    // Initialize first image
+    updateMainImage(0);
   </script>
 </body>
 </html>
