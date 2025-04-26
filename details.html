@@ -101,6 +101,27 @@
     .details strong {
       color: #FFD700;
     }
+     /* Footer Styles */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      z-index: 100;
+      border-top: 1px solid #FFD700;
+      text-align: center;
+    }
+    .facebook-link img {
+      width: 30px;
+      height: 30px;
+      opacity: 0.6; /* Low transparency */
+      transition: opacity 0.3s;
+      filter: brightness(0) invert(1); /* Ensures white color */
+    }
+    .facebook-link img:hover {
+      opacity: 1; /* Full opacity on hover */
+    }
     @media (max-width: 700px) {
       h1 {
         font-size: 2em;
@@ -115,6 +136,12 @@
       .nav a {
         font-size: 14px;
         margin: 0 15px;
+       footer {
+        padding: 8px 0;
+      }
+      .facebook-link img {
+        width: 25px;
+        height: 25px;
       }
     }
   </style>
@@ -168,6 +195,13 @@
     </div>
   </div>
 
+   <!-- Footer with Facebook Link -->
+  <footer>
+    <a href="https://www.facebook.com" target="_blank" class="facebook-link" title="Visit our Facebook page">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+    </a>
+  </footer>
+  
   <script>
 // Background Slideshow
 const backgrounds = [
