@@ -167,6 +167,28 @@
     .disclaimer a:hover {
       color: #E5E5E5;
     }
+    /* Footer Styles */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0);
+      padding: 10px 40px 10px 0; /* Increased padding-right for more offset */
+      z-index: 90;
+      text-align: right;
+    }
+    .facebook-link {
+      display: inline-block;
+    }
+    .facebook-link img {
+      width: 30px;
+      height: 30px;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .facebook-link img:hover {
+      opacity: 1;
+    }
     /* Lightbox Styles */
     .lightbox {
       display: none;
@@ -228,26 +250,6 @@
     .lightbox-close:hover {
       background: #FFD700;
       color: #000000;
-    }
-    /* Footer Styles */
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 0;
-      z-index: 100;
-      text-align: right;
-    }
-    .facebook-link img {
-      width: 30px;
-      height: 30px;
-      opacity: 0.6; /* Low transparency */
-      transition: opacity 0.3s;
-      filter: brightness(0) invert(1); /* Ensures white color */
-    }
-    .facebook-link img:hover {
-      opacity: 1; /* Full opacity on hover */
     }
     @media (max-width: 700px) {
       h1 {
