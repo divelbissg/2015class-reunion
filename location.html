@@ -13,9 +13,10 @@
       margin: 0;
       padding: 0;
       text-align: center;
-      min-height: 100vh;
+      height: 100vh; /* Ensure body takes full viewport height */
       position: relative;
       overflow-x: hidden;
+      overflow-y: hidden; /* Disable vertical scrolling */
     }
     .background-slideshow {
       position: fixed;
@@ -68,7 +69,6 @@
       position: relative;
       z-index: 1;
       padding: 100px 20px;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -98,13 +98,13 @@
       margin: 15px 0;
       line-height: 1.8;
     }
-    //* Footer Styles */
+    /* Footer Styles */
     footer {
       position: fixed;
       bottom: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0);
-      padding: 10px 40px 10px 0; /* Increased padding-right for more offset */
+      padding: 10px 40px 10px 0; /* Matches previous page */
       z-index: 90;
       text-align: right;
     }
@@ -124,11 +124,11 @@
       h1 {
         font-size: 2em;
       }
-      .details {
+      .location {
         margin: 10px;
         padding: 20px;
       }
-      .details p {
+      .location p {
         font-size: 1em;
       }
       .nav a {
@@ -136,7 +136,7 @@
         margin: 0 15px;
       }
       footer {
-        padding: 8px 30px 8px 0; /* Increased padding-right for smaller screens */
+        padding: 8px 30px 8px 0; /* Matches previous page */
       }
       .facebook-link img {
         width: 25px;
@@ -188,86 +188,88 @@
       <p>We will update all registered guests as soon as the venue is confirmed. Stay tuned!</p>
     </div>
   </div>
-<!-- Footer with Facebook Link -->
+
+  <!-- Footer with Facebook Link -->
   <footer>
     <a href="https://www.facebook.com/share/g/1BkDiymXU3/" target="_blank" class="facebook-link" title="Visit our Facebook page">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
     </a>
   </footer>
+  
   <script>
-// Background Slideshow
-const backgrounds = [
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
-];
+    // Background Slideshow
+    const backgrounds = [
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
+    ];
 
-// Fisher-Yates shuffle to randomize array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
+    // Fisher-Yates shuffle to randomize array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
 
-// Shuffle backgrounds initially
-let shuffledBackgrounds = [...backgrounds];
-shuffleArray(shuffledBackgrounds);
-
-let currentBgIndex = 0;
-let usedIndices = []; // Track used indices to avoid immediate repeats
-
-function changeBackground() {
-  const bgElements = document.querySelectorAll(".background-slideshow");
-  bgElements.forEach(bg => bg.classList.remove("active"));
-
-  // If all images have been used, reset and reshuffle
-  if (usedIndices.length >= shuffledBackgrounds.length) {
-    usedIndices = [];
+    // Shuffle backgrounds initially
+    let shuffledBackgrounds = [...backgrounds];
     shuffleArray(shuffledBackgrounds);
-  }
 
-  // Select a random index that hasn't been used yet
-  let nextIndex;
-  do {
-    nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
-  } while (usedIndices.includes(nextIndex));
+    let currentBgIndex = 0;
+    let usedIndices = []; // Track used indices to avoid immediate repeats
 
-  usedIndices.push(nextIndex);
+    function changeBackground() {
+      const bgElements = document.querySelectorAll(".background-slideshow");
+      bgElements.forEach(bg => bg.classList.remove("active"));
 
-  // Apply the new background to the current div
-  const currentBg = bgElements[currentBgIndex];
-  currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
-  currentBg.classList.add("active");
+      // If all images have been used, reset and reshuffle
+      if (usedIndices.length >= shuffledBackgrounds.length) {
+        usedIndices = [];
+        shuffleArray(shuffledBackgrounds);
+      }
 
-  // Move to the next div for the next transition
-  currentBgIndex = (currentBgIndex + 1) % bgElements.length;
-}
+      // Select a random index that hasn't been used yet
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
+      } while (usedIndices.includes(nextIndex));
 
-// Initialize the first background
-changeBackground();
+      usedIndices.push(nextIndex);
 
-// Change background every 10 seconds
-setInterval(changeBackground, 10000);
-</script>
+      // Apply the new background to the current div
+      const currentBg = bgElements[currentBgIndex];
+      currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
+      currentBg.classList.add("active");
+
+      // Move to the next div for the next transition
+      currentBgIndex = (currentBgIndex + 1) % bgElements.length;
+    }
+
+    // Initialize the first background
+    changeBackground();
+
+    // Change background every 10 seconds
+    setInterval(changeBackground, 10000);
+  </script>
 </body>
 </html>
