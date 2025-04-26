@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQ - Class of 2015 Reunion</title>
+  <title>Details - Class of 2015 Reunion</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Raleway:wght@400;700&family=Poiret+One&display=swap" rel="stylesheet">
   <style>
     body {
@@ -83,7 +83,7 @@
       border-bottom: 2px solid #FFD700;
       padding-bottom: 10px;
     }
-    .faq {
+    .details {
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
@@ -92,99 +92,54 @@
       border-radius: 8px;
       border: 2px solid #FFD700;
     }
-    .faq h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.5em;
-      color: #FFD700;
-      margin: 25px 0 15px;
-      letter-spacing: 1px;
-    }
-    .faq p {
-      font-size: 1.1em;
-      color: #E5E5E5;
-      margin: 0 0 20px;
-      line-height: 1.8;
-    }
-    .faq a {
-      color: #FFD700;
-      text-decoration: underline;
-    }
-    .faq a:hover {
-      color: #E5E5E5;
-    }
-    .submit-question {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .submit-question p {
+    .details p {
       font-size: 1.2em;
       color: #E5E5E5;
-      margin-bottom: 15px;
+      margin: 15px 0;
+      line-height: 1.8;
     }
-    .submit-question a {
-      background-color: #FFD700;
-      color: #000000;
-      padding: 10px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      display: inline-block;
-      transition: all 0.3s;
-      border: 2px solid #FFD700;
-    }
-    .submit-question a:hover {
-      background-color: #E5E5E5;
-      color: #000000;
-      box-shadow: 0 0 15px #FFD700;
+    .details strong {
+      color: #FFD700;
     }
     /* Footer Styles */
     footer {
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 0;
-      z-index: 100;
+      background: rgba(0, 0, 0, 0);
+      padding: 10px 40px 10px 0; /* Increased padding-right for more offset */
+      z-index: 90;
       text-align: right;
+    }
+    .facebook-link {
+      display: inline-block;
     }
     .facebook-link img {
       width: 30px;
       height: 30px;
-      opacity: 0.6; /* Low transparency */
+      opacity: 0.8;
       transition: opacity 0.3s;
-      filter: brightness(0) invert(1); /* Ensures white color */
     }
     .facebook-link img:hover {
-      opacity: 1; /* Full opacity on hover */
+      opacity: 1;
     }
     @media (max-width: 700px) {
       h1 {
         font-size: 2em;
       }
-      .faq {
+      .details {
         margin: 10px;
         padding: 20px;
       }
-      .faq h2 {
-        font-size: 1.2em;
-      }
-      .faq p {
+      .details p {
         font-size: 1em;
-      }
-      .submit-question p {
-        font-size: 1em;
-      }
-      .submit-question a {
-        padding: 8px 20px;
-        font-size: 14px;
       }
       .nav a {
         font-size: 14px;
         margin: 0 15px;
+      }
       footer {
-        padding: 8px 0;
+        padding: 8px 30px 8px 0; /* Increased padding-right for smaller screens */
       }
       .facebook-link img {
         width: 25px;
@@ -223,41 +178,22 @@
     <a href="index.html" title="Back to home page">Home</a>
     <a href="details.html" title="Event date, time, dress code, and more">Details</a>
     <a href="location.html" title="Location details (TBD)">Location</a>
-    <a href="gallery.html" title="View photos from our high school days">Gallery</a>
+    <a href="gallery.html" title="View photos from high school days">Gallery</a>
     <a href="faq.html" title="Frequently asked questions about the reunion">FAQ</a>
     <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank" title="Register for the reunion here">RSVP</a>
   </div>
 
   <!-- Main Content -->
   <div class="content">
-    <h1>Frequently Asked Questions</h1>
-    <div class="faq">
-      <h2>What is the date and time of the reunion?</h2>
-      <p>Scheduled for October 11, 2025, from TBD PM to TBD PM.</p>
-
-      <h2>Where will the reunion be held?</h2>
-      <p>The location is currently TBD. We’ll update all registered guests as soon as the venue is confirmed.</p>
-
-      <h2>What is the dress code?</h2>
-      <p>The dress code is Black & Gold Semi-Formal. We encourage you to embrace the theme with your attire!</p>
-
-      <h2>How much is the entry fee?</h2>
-      <p>The entry fee is $TBD per guest, which includes access to the event, food, and entertainment.</p>
-
-      <h2>Can I bring a guest?</h2>
-      <p>Yes, you may bring one guest. Please note this is a 21+ event, and children are not permitted.</p>
-
-      <h2>How do I RSVP for the reunion?</h2>
-      <p>You can RSVP by clicking the “RSVP” link in the navigation bar or directly via <a href="https://forms.gle/vHFTYvjDLDFTGJRA8" target="_blank">this link</a>.</p>
-
-      <h2>Who can I contact for more information?</h2>
-      <p>For any questions or additional information, please contact our reunion committee using the Submit Your Question link below.</p>
-
-      <!-- New Section for Submitting Questions -->
-      <div class="submit-question">
-        <p>Have a question that’s not answered here?</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSctV0y3rsm2SmqLA-wvfvaIKQEoqbqWqXwaKTYHlDDNt4W9qA/viewform?usp=header" target="_blank">Submit Your Question</a>
-      </div>
+    <h1>Event Details</h1>
+    <div class="details">
+      <p><strong>Date:</strong> October 11, 2025</p>
+      <p><strong>Time:</strong> TBD PM – TBD PM</p>
+      <p><strong>Location:</strong> TBD</p>
+      <p><strong>Entry Fee:</strong> $TBD per guest</p>
+      <p><strong>Dress Code:</strong> Black & Gold Semi-Formal</p>
+      <p><strong>Guest Policy:</strong> One guest per person, 21+ event (no children permitted)</p>
+      <p>Join us for a night of nostalgia, music, and unforgettable memories!</p>
     </div>
   </div>
 
@@ -267,81 +203,81 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
     </a>
   </footer>
-
+  
   <script>
-// Background Slideshow
-const backgrounds = [
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
-  "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
-];
+    // Background Slideshow
+    const backgrounds = [
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4220.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4221.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4222.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4223.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4224.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4225.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4226.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4227.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4228.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4229.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4230.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4231.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4232.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4233.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4234.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4235.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4236.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4237.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4238.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4239.jpg?raw=true",
+      "https://github.com/divelbissg/2015class-reunion/blob/main/images/IMG_4240.jpg?raw=true"
+    ];
 
-// Fisher-Yates shuffle to randomize array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
+    // Fisher-Yates shuffle to randomize array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
 
-// Shuffle backgrounds initially
-let shuffledBackgrounds = [...backgrounds];
-shuffleArray(shuffledBackgrounds);
-
-let currentBgIndex = 0;
-let usedIndices = []; // Track used indices to avoid immediate repeats
-
-function changeBackground() {
-  const bgElements = document.querySelectorAll(".background-slideshow");
-  bgElements.forEach(bg => bg.classList.remove("active"));
-
-  // If all images have been used, reset and reshuffle
-  if (usedIndices.length >= shuffledBackgrounds.length) {
-    usedIndices = [];
+    // Shuffle backgrounds initially
+    let shuffledBackgrounds = [...backgrounds];
     shuffleArray(shuffledBackgrounds);
-  }
 
-  // Select a random index that hasn't been used yet
-  let nextIndex;
-  do {
-    nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
-  } while (usedIndices.includes(nextIndex));
+    let currentBgIndex = 0;
+    let usedIndices = []; // Track used indices to avoid immediate repeats
 
-  usedIndices.push(nextIndex);
+    function changeBackground() {
+      const bgElements = document.querySelectorAll(".background-slideshow");
+      bgElements.forEach(bg => bg.classList.remove("active"));
 
-  // Apply the new background to the current div
-  const currentBg = bgElements[currentBgIndex];
-  currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
-  currentBg.classList.add("active");
+      // If all images have been used, reset and reshuffle
+      if (usedIndices.length >= shuffledBackgrounds.length) {
+        usedIndices = [];
+        shuffleArray(shuffledBackgrounds);
+      }
 
-  // Move to the next div for the next transition
-  currentBgIndex = (currentBgIndex + 1) % bgElements.length;
-}
+      // Select a random index that hasn't been used yet
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * shuffledBackgrounds.length);
+      } while (usedIndices.includes(nextIndex));
 
-// Initialize the first background
-changeBackground();
+      usedIndices.push(nextIndex);
 
-// Change background every 10 seconds
-setInterval(changeBackground, 10000);
-</script>
+      // Apply the new background to the current div
+      const currentBg = bgElements[currentBgIndex];
+      currentBg.style.backgroundImage = `url(${shuffledBackgrounds[nextIndex]})`;
+      currentBg.classList.add("active");
+
+      // Move to the next div for the next transition
+      currentBgIndex = (currentBgIndex + 1) % bgElements.length;
+    }
+
+    // Initialize the first background
+    changeBackground();
+
+    // Change background every 10 seconds
+    setInterval(changeBackground, 10000);
+  </script>
 </body>
 </html>
