@@ -15,8 +15,7 @@
       text-align: center;
       height: 100vh;
       position: relative;
-      overflow-x: hidden;
-      overflow-y: hidden;
+      overflow-x: hidden; /* Allow vertical scrolling, prevent horizontal */
     }
     .background-slideshow {
       position: fixed;
@@ -72,7 +71,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 100%;
+      min-height: 100vh; /* Ensure content takes full height with scroll if needed */
     }
     h1 {
       font-family: 'Cinzel', serif;
@@ -91,7 +90,7 @@
       background: rgba(0, 0, 0, 0.8);
       padding: 30px;
       border-radius: 8px;
-      border: 4px solid #FFD700; /* Thicker border for prominence */
+      border: 4px solid #FFD700;
     }
     .location-info h2 {
       font-family: 'Cinzel', serif;
@@ -101,7 +100,7 @@
       letter-spacing: 1px;
     }
     .location-info p {
-      font-size: 1.5em; /* Larger font for prominence */
+      font-size: 1.5em;
       color: #E5E5E5;
       margin: 10px 0;
       line-height: 1.8;
@@ -112,14 +111,14 @@
       width: 100%;
       position: relative;
       overflow: hidden;
+      border: 2px solid #FFD700; /* Complete border around slider */
+      border-radius: 8px;
     }
     .slider img {
       width: 100%;
       height: 450px;
       object-fit: contain;
       background: #000;
-      border: 2px solid #FFD700;
-      border-radius: 8px;
       display: none;
     }
     .slider img.active {
@@ -127,9 +126,9 @@
     }
     .slider-buttons {
       position: absolute;
-      top: 50%;
+      top: 100%; /* Move buttons below the image */
       width: 100%;
-      transform: translateY(-50%);
+      transform: translateY(10px); /* Slight offset for spacing */
       display: flex;
       justify-content: space-between;
       padding: 0 10px;
@@ -189,6 +188,9 @@
       }
       .location-info p {
         font-size: 1.2em;
+      }
+      .slider {
+        max-width: 90%;
       }
       .slider img {
         height: 300px;
@@ -251,7 +253,7 @@
     <h1>Location</h1>
     <div class="location-info">
       <h2>The Handlebar Pub & Grill</h2>
-      <p>650 Apache Trail, Apache Junction, AZ 85120</p>
+      <p><a href="https://maps.google.com/?q=650 Apache Trail, Apache Junction, AZ 85120" target="_blank">650 Apache Trail, Apache Junction, AZ 85120</a></p>
     </div>
     <div class="slider">
       <img src="https://github.com/divelbissg/2015class-reunion/blob/main/images/unnamed4.jpg?raw=true" alt="Location Image 1" class="active">
